@@ -3,687 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HarvestIQ — Buyer Dashboard</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>HarvestIQ — Postharvest Intelligence for Nigerian Farmers</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --green:#1a3a1a;--green-mid:#2D6A2D;--green-light:#4CAF50;
-  --amber:#F5A623;--amber-dark:#c4851c;
-  --bg:#F5F7F2;--surface:#fff;--surface2:#EEF2E8;
-  --text:#111;--muted:#5a6a52;--border:#D6E0CC;
-  --red:#E24B4A;--blue:#185FA5;
-  --font:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
-  --radius:10px;--radius-lg:16px;
-}
-body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --green:#2D6A2D;--green-light:#4CAF50;--amber:#F5A623;
+    --dark:#0F1A0F;--text:#1a1a1a;--muted:#555;--bg:#FAFDF7;
+  }
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text)}
+  a{text-decoration:none;color:inherit}
 
-/* SIDEBAR */
-.layout{display:flex;min-height:100vh}
-.sidebar{width:220px;background:var(--green);display:flex;flex-direction:column;padding:0;flex-shrink:0;position:sticky;top:0;height:100vh}
-.sidebar-logo{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,0.08)}
-.logo-text{font-size:1.3rem;font-weight:600;color:#fff;letter-spacing:-0.3px}
-.logo-text span{color:var(--amber)}
-.logo-sub{font-size:11px;color:rgba(255,255,255,0.45);margin-top:2px;font-family:var(--mono)}
-.sidebar-nav{padding:1rem 0;flex:1}
-.nav-section{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:0 1.25rem;margin:1rem 0 .4rem}
-.nav-item{display:flex;align-items:center;gap:10px;padding:.65rem 1.25rem;font-size:13.5px;color:rgba(255,255,255,0.65);cursor:pointer;transition:all .15s;border-left:3px solid transparent}
-.nav-item:hover{background:rgba(255,255,255,0.06);color:#fff}
-.nav-item.active{background:rgba(255,255,255,0.1);color:#fff;border-left-color:var(--amber)}
-.nav-item .icon{font-size:16px;width:18px;text-align:center}
-.sidebar-bottom{padding:1rem 1.25rem;border-top:1px solid rgba(255,255,255,0.08)}
-.sidebar-user{display:flex;align-items:center;gap:10px}
-.user-avatar{width:32px;height:32px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--green);flex-shrink:0}
-.user-name{font-size:13px;font-weight:500;color:#fff}
-.user-role{font-size:11px;color:rgba(255,255,255,0.4)}
+  /* NAV */
+  nav{background:var(--dark);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+  .logo{font-size:1.4rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px}
+  .logo span{color:var(--amber)}
+  .nav-cta{background:var(--amber);color:var(--dark);padding:8px 20px;border-radius:6px;font-weight:600;font-size:14px}
 
-/* MAIN */
-.main{flex:1;overflow-y:auto}
-.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:.85rem 1.75rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
-.topbar-title{font-size:15px;font-weight:600;color:var(--text)}
-.topbar-right{display:flex;align-items:center;gap:10px}
-.badge-live{display:inline-flex;align-items:center;gap:5px;background:#EAF3DE;color:#3B6D11;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px}
-.badge-live::before{content:'';width:6px;height:6px;border-radius:50%;background:#4CAF50;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.btn{padding:7px 14px;border-radius:var(--radius);font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text);display:inline-flex;align-items:center;gap:6px;transition:all .15s}
-.btn:hover{background:var(--surface2)}
-.btn-primary{background:var(--green-mid);color:#fff;border-color:var(--green-mid)}
-.btn-primary:hover{background:var(--green)}
-.btn-amber{background:var(--amber);color:var(--green);border-color:var(--amber);font-weight:600}
-.btn-amber:hover{background:var(--amber-dark)}
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--dark) 0%,#1a3a1a 100%);color:#fff;padding:5rem 2rem;text-align:center}
+  .hero-badge{display:inline-block;background:rgba(245,166,35,0.15);border:1px solid var(--amber);color:var(--amber);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:500;margin-bottom:1.5rem}
+  .hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.15;margin-bottom:1.25rem;max-width:800px;margin-left:auto;margin-right:auto}
+  .hero h1 span{color:var(--amber)}
+  .hero p{font-size:1.15rem;color:rgba(255,255,255,0.75);max-width:580px;margin:0 auto 2rem;line-height:1.7}
+  .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn-primary{background:var(--green-light);color:#fff;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px}
+  .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3);padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px}
 
-/* CONTENT */
-.content{padding:1.5rem 1.75rem}
-.page{display:none}
-.page.active{display:block}
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;background:var(--amber)}
+  .stat{padding:1.5rem 2rem;text-align:center;border-right:1px solid rgba(0,0,0,0.1)}
+  .stat:last-child{border-right:none}
+  .stat-num{font-size:2rem;font-weight:700;color:var(--dark)}
+  .stat-lbl{font-size:13px;color:rgba(0,0,0,0.65);margin-top:4px}
 
-/* METRICS ROW */
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:1.5rem}
-.metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.1rem 1.25rem}
-.metric-label{font-size:12px;color:var(--muted);margin-bottom:.4rem;display:flex;align-items:center;gap:6px}
-.metric-value{font-size:1.6rem;font-weight:600;color:var(--text);line-height:1}
-.metric-sub{font-size:12px;color:var(--muted);margin-top:.3rem}
-.metric-up{color:var(--green-light)}
-.metric-down{color:var(--red)}
+  /* SECTION */
+  section{padding:4rem 2rem;max-width:1100px;margin:0 auto}
+  .section-label{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green-light);margin-bottom:.75rem}
+  .section-title{font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;color:var(--dark);margin-bottom:1rem;line-height:1.25}
+  .section-sub{font-size:1rem;color:var(--muted);line-height:1.7;max-width:600px}
 
-/* TWO COL */
-.two-col{display:grid;grid-template-columns:1.6fr 1fr;gap:16px;margin-bottom:1.5rem}
+  /* PROBLEM */
+  .problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:2.5rem}
+  .problem-card{background:#fff;border:1px solid #e8f0e8;border-radius:12px;padding:1.5rem;border-left:4px solid var(--green-light)}
+  .problem-icon{font-size:1.75rem;margin-bottom:.75rem}
+  .problem-title{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:.5rem}
+  .problem-body{font-size:13px;color:var(--muted);line-height:1.6}
 
-/* CARD */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
-.card-header{padding:.9rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.card-title{font-size:13.5px;font-weight:600;color:var(--text)}
-.card-body{padding:1.25rem}
+  /* HOW IT WORKS */
+  .how-bg{background:#fff;padding:4rem 2rem}
+  .how-inner{max-width:1100px;margin:0 auto}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:2.5rem}
+  .step{text-align:center;padding:1.5rem}
+  .step-num{width:48px;height:48px;border-radius:50%;background:var(--green);color:#fff;font-size:1.2rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+  .step-title{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:.5rem}
+  .step-body{font-size:13px;color:var(--muted);line-height:1.6}
+  .step-arrow{display:none}
 
-/* TABLE */
-.table{width:100%;border-collapse:collapse;font-size:13px}
-.table th{text-align:left;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding:.6rem .75rem;border-bottom:1px solid var(--border)}
-.table td{padding:.7rem .75rem;border-bottom:1px solid var(--border);color:var(--text)}
-.table tr:last-child td{border-bottom:none}
-.table tr:hover td{background:var(--surface2)}
-.table tr{cursor:pointer;transition:background .1s}
-.tag{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500}
-.tag-green{background:#EAF3DE;color:#3B6D11}
-.tag-amber{background:#FAEEDA;color:#854F0B}
-.tag-blue{background:#E6F1FB;color:#185FA5}
-.tag-red{background:#FCEBEB;color:#A32D2D}
+  /* USSD DEMO */
+  .demo-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2.5rem}
+  .phone{background:var(--dark);border-radius:24px;padding:2rem 1.5rem;color:#fff;font-family:'Courier New',monospace;font-size:13px;line-height:1.8;max-width:300px}
+  .phone-header{font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:1rem;text-align:center}
+  .phone-screen{background:#111;border-radius:12px;padding:1.25rem;color:#4CAF50}
+  .phone-title{color:rgba(255,255,255,0.6);font-size:11px;margin-bottom:.5rem}
+  .demo-points{display:flex;flex-direction:column;gap:16px}
+  .demo-point{display:flex;gap:12px;align-items:flex-start}
+  .demo-dot{width:10px;height:10px;border-radius:50%;background:var(--green-light);flex-shrink:0;margin-top:5px}
+  .demo-text{font-size:14px;color:var(--muted);line-height:1.6}
+  .demo-text strong{color:var(--dark)}
 
-/* LISTINGS */
-.listing-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.1rem 1.25rem;display:flex;align-items:center;gap:1rem;cursor:pointer;transition:all .15s;margin-bottom:10px}
-.listing-card:hover{border-color:var(--green-mid);box-shadow:0 2px 8px rgba(45,106,45,0.08)}
-.listing-crop-icon{width:44px;height:44px;border-radius:10px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
-.listing-info{flex:1}
-.listing-name{font-size:14px;font-weight:600;color:var(--text)}
-.listing-meta{font-size:12px;color:var(--muted);margin-top:2px}
-.listing-price{text-align:right}
-.listing-price-val{font-size:15px;font-weight:600;color:var(--green-mid);font-family:var(--mono)}
-.listing-price-kg{font-size:11px;color:var(--muted)}
-.listing-actions{display:flex;gap:8px}
+  /* CATEGORIES */
+  .cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:2rem}
+  .cat{background:#fff;border:1px solid #e8f0e8;border-radius:10px;padding:1rem;text-align:center}
+  .cat-icon{font-size:1.5rem;margin-bottom:.5rem}
+  .cat-name{font-size:13px;font-weight:600;color:var(--dark)}
 
-/* PRICE CHART */
-.price-rows{display:flex;flex-direction:column;gap:10px}
-.price-row{display:flex;align-items:center;gap:10px}
-.price-crop{font-size:13px;font-weight:500;width:80px;flex-shrink:0}
-.price-bar-wrap{flex:1;background:var(--surface2);border-radius:4px;height:8px;overflow:hidden}
-.price-bar{height:8px;border-radius:4px;background:var(--green-light);transition:width .6s ease}
-.price-val{font-size:12px;font-weight:500;font-family:var(--mono);width:65px;text-align:right;color:var(--text)}
-.price-trend{font-size:11px;width:55px;text-align:right}
+  /* CTA */
+  .cta-section{background:linear-gradient(135deg,var(--green) 0%,#1a4a1a 100%);color:#fff;padding:5rem 2rem;text-align:center}
+  .cta-section h2{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:700;margin-bottom:1rem}
+  .cta-section p{color:rgba(255,255,255,0.75);font-size:1rem;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+  .ussd-code{display:inline-block;background:var(--amber);color:var(--dark);font-size:1.5rem;font-weight:700;padding:12px 32px;border-radius:8px;font-family:monospace;margin-bottom:1.5rem}
 
-/* DEMAND FORM */
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.form-group{display:flex;flex-direction:column;gap:4px}
-.form-label{font-size:12px;font-weight:500;color:var(--muted)}
-.form-input{padding:8px 10px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px;background:var(--surface);color:var(--text);font-family:var(--font);outline:none;transition:border-color .15s}
-.form-input:focus{border-color:var(--green-mid)}
-select.form-input{cursor:pointer}
+  /* FOOTER */
+  footer{background:var(--dark);color:rgba(255,255,255,0.5);text-align:center;padding:2rem;font-size:13px}
+  footer strong{color:#fff}
 
-/* MAP PLACEHOLDER */
-.map-placeholder{background:var(--surface2);border-radius:var(--radius);height:200px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--muted);font-size:13px;border:1px dashed var(--border)}
-
-/* ALERTS */
-.alert-row{display:flex;align-items:center;gap:10px;padding:.7rem 0;border-bottom:1px solid var(--border)}
-.alert-row:last-child{border-bottom:none}
-.alert-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.alert-text{flex:1;font-size:13px;color:var(--text)}
-.alert-time{font-size:11px;color:var(--muted)}
-
-/* EMPTY */
-.empty{text-align:center;padding:3rem 1rem;color:var(--muted)}
-.empty-icon{font-size:2rem;margin-bottom:.75rem;opacity:.4}
-.empty-text{font-size:13px}
-
-/* MODAL OVERLAY */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:100;align-items:center;justify-content:center}
-.modal-overlay.open{display:flex}
-.modal{background:var(--surface);border-radius:var(--radius-lg);padding:1.5rem;width:420px;max-width:95vw}
-.modal-title{font-size:15px;font-weight:600;margin-bottom:1.25rem}
-.modal-footer{display:flex;gap:8px;justify-content:flex-end;margin-top:1.25rem}
-
-@media(max-width:900px){
-  .sidebar{display:none}
-  .metrics{grid-template-columns:1fr 1fr}
-  .two-col{grid-template-columns:1fr}
-}
+  @media(max-width:700px){
+    .demo-wrap{grid-template-columns:1fr}
+    .phone{max-width:100%}
+    .stat{border-right:none;border-bottom:1px solid rgba(0,0,0,0.1)}
+  }
 </style>
 </head>
 <body>
 
-<div class="layout">
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sidebar-logo">
-      <div class="logo-text">Harvest<span>IQ</span></div>
-      <div class="logo-sub">Buyer Dashboard</div>
+<nav>
+  <div class="logo">🌾 Harvest<span>IQ</span></div>
+  <a href="mailto:harvestiqng@gmail.com" class="nav-cta">Contact Us</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">🇳🇬 Built for Nigerian Smallholder Farmers</div>
+  <h1>Stop Losing Your Harvest.<br>Start Selling <span>Smarter.</span></h1>
+  <p>HarvestIQ delivers real-time market prices, AI-powered storage advice, and direct buyer connections — all via USSD. No smartphone. No internet. No middlemen.</p>
+  <div class="hero-btns">
+    <a href="#how" class="btn-primary">See How It Works</a>
+    <a href="#contact" class="btn-secondary">Get Early Access</a>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">40%</div><div class="stat-lbl">of food lost post-harvest</div></div>
+  <div class="stat"><div class="stat-num">₦5T</div><div class="stat-lbl">annual food trade loss</div></div>
+  <div class="stat"><div class="stat-num">99%</div><div class="stat-lbl">farmers reachable by USSD</div></div>
+  <div class="stat"><div class="stat-num">72hrs</div><div class="stat-lbl">critical harvest window</div></div>
+</div>
+
+<section>
+  <div class="section-label">The Problem</div>
+  <div class="section-title">Nigerian farmers lose 40% of their harvest — not from bad farming, but bad information.</div>
+  <div class="section-sub">In the 72 hours after harvest, most smallholder farmers have no idea what the market price is, how long they can safely store their produce, or who is buying today. HarvestIQ solves all three.</div>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="problem-icon">📉</div>
+      <div class="problem-title">No price visibility</div>
+      <div class="problem-body">Farmers sell to middlemen at 40% below market rate because they don't know the real price at nearby markets.</div>
     </div>
-    <nav class="sidebar-nav">
-      <div class="nav-section">Overview</div>
-      <div class="nav-item active" onclick="navigate('dashboard')">
-        <span class="icon">&#9632;</span> Dashboard
-      </div>
-      <div class="nav-item" onclick="navigate('listings')">
-        <span class="icon">&#9642;</span> Produce Listings
-      </div>
-      <div class="nav-item" onclick="navigate('prices')">
-        <span class="icon">&#9650;</span> Market Prices
-      </div>
-      <div class="nav-section">Actions</div>
-      <div class="nav-item" onclick="navigate('demand')">
-        <span class="icon">&#43;</span> Post Demand
-      </div>
-      <div class="nav-item" onclick="navigate('alerts')">
-        <span class="icon">&#9679;</span> Alerts
-      </div>
-    </nav>
-    <div class="sidebar-bottom">
-      <div class="sidebar-user">
-        <div class="user-avatar">AB</div>
-        <div>
-          <div class="user-name">Alhaji Bello</div>
-          <div class="user-role">Kano Aggregator</div>
-        </div>
-      </div>
+    <div class="problem-card">
+      <div class="problem-icon">🍅</div>
+      <div class="problem-title">Produce spoilage</div>
+      <div class="problem-body">Without storage guidance, up to 50% of tomatoes and peppers rot before they reach buyers.</div>
     </div>
-  </aside>
-
-  <!-- MAIN -->
-  <div class="main">
-    <div class="topbar">
-      <div class="topbar-title" id="page-title">Dashboard</div>
-      <div class="topbar-right">
-        <div class="badge-live">Live data</div>
-        <button class="btn btn-amber" onclick="openModal()">+ Post Demand</button>
-      </div>
+    <div class="problem-card">
+      <div class="problem-icon">🤝</div>
+      <div class="problem-title">No buyer access</div>
+      <div class="problem-body">Farmers have no direct way to reach buyers, processors or aggregators — they depend entirely on middlemen.</div>
     </div>
+    <div class="problem-card">
+      <div class="problem-icon">📵</div>
+      <div class="problem-title">Smartphone barrier</div>
+      <div class="problem-body">Existing agritech solutions require smartphones and internet. 99% of farmers only have basic feature phones.</div>
+    </div>
+  </div>
+</section>
 
-    <div class="content">
-
-      <!-- DASHBOARD PAGE -->
-      <div class="page active" id="page-dashboard">
-        <div class="metrics">
-          <div class="metric">
-            <div class="metric-label">&#9642; Active Listings</div>
-            <div class="metric-value">24</div>
-            <div class="metric-sub metric-up">&#9650; 6 new today</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">&#9650; Avg Tomato Price</div>
-            <div class="metric-value">₦382</div>
-            <div class="metric-sub metric-up">&#9650; +8% this week</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">&#9632; Farmers Registered</div>
-            <div class="metric-value">147</div>
-            <div class="metric-sub">across 3 states</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">&#9679; Matches This Week</div>
-            <div class="metric-value">12</div>
-            <div class="metric-sub metric-up">&#9650; 3 pending confirm</div>
-          </div>
-        </div>
-
-        <div class="two-col">
-          <!-- RECENT LISTINGS -->
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">Recent produce listings</div>
-              <button class="btn" onclick="navigate('listings')" style="font-size:12px;padding:5px 10px">View all</button>
-            </div>
-            <div class="card-body" style="padding:0">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Crop</th>
-                    <th>Qty</th>
-                    <th>Location</th>
-                    <th>Listed</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr onclick="showListing('Tomato','Benue','200kg','₦380/kg','2348031234567')">
-                    <td><strong>Tomato</strong></td><td>200kg</td><td>Makurdi, Benue</td><td>2h ago</td><td><span class="tag tag-green">Active</span></td>
-                  </tr>
-                  <tr onclick="showListing('Maize','Kano','500kg','₦275/kg','2348045678901')">
-                    <td><strong>Maize</strong></td><td>500kg</td><td>Kano</td><td>3h ago</td><td><span class="tag tag-green">Active</span></td>
-                  </tr>
-                  <tr onclick="showListing('Yam','Niger','300kg','₦340/kg','2348056789012')">
-                    <td><strong>Yam</strong></td><td>300kg</td><td>Minna, Niger</td><td>5h ago</td><td><span class="tag tag-amber">Pending</span></td>
-                  </tr>
-                  <tr onclick="showListing('Onion','Kano','150kg','₦440/kg','2348067890123')">
-                    <td><strong>Onion</strong></td><td>150kg</td><td>Kano</td><td>6h ago</td><td><span class="tag tag-green">Active</span></td>
-                  </tr>
-                  <tr onclick="showListing('Pepper','Lagos','80kg','₦790/kg','2348078901234')">
-                    <td><strong>Pepper</strong></td><td>80kg</td><td>Lagos</td><td>8h ago</td><td><span class="tag tag-blue">Matched</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <!-- ALERTS + PRICES -->
-          <div style="display:flex;flex-direction:column;gap:16px">
-            <div class="card">
-              <div class="card-header">
-                <div class="card-title">Price alerts</div>
-                <span class="tag tag-amber">3 active</span>
-              </div>
-              <div class="card-body" style="padding:.75rem 1.25rem">
-                <div class="alert-row">
-                  <div class="alert-dot" style="background:var(--green-light)"></div>
-                  <div class="alert-text">Tomato &gt; ₦400/kg in Kano</div>
-                  <div class="alert-time">set 2d ago</div>
-                </div>
-                <div class="alert-row">
-                  <div class="alert-dot" style="background:var(--amber)"></div>
-                  <div class="alert-text">Maize &gt; ₦300/kg in Benue</div>
-                  <div class="alert-time">set 3d ago</div>
-                </div>
-                <div class="alert-row">
-                  <div class="alert-dot" style="background:var(--blue)"></div>
-                  <div class="alert-text">Onion &gt; ₦500/kg in Kano</div>
-                  <div class="alert-time">set 5d ago</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-header">
-                <div class="card-title">Today's top prices</div>
-                <span style="font-size:11px;color:var(--muted)">Kano market</span>
-              </div>
-              <div class="card-body">
-                <div class="price-rows">
-                  <div class="price-row">
-                    <div class="price-crop">Tomato</div>
-                    <div class="price-bar-wrap"><div class="price-bar" style="width:76%"></div></div>
-                    <div class="price-val">₦382/kg</div>
-                    <div class="price-trend" style="color:var(--green-light)">&#9650; +8%</div>
-                  </div>
-                  <div class="price-row">
-                    <div class="price-crop">Onion</div>
-                    <div class="price-bar-wrap"><div class="price-bar" style="width:88%"></div></div>
-                    <div class="price-val">₦450/kg</div>
-                    <div class="price-trend" style="color:var(--green-light)">&#9650; +3%</div>
-                  </div>
-                  <div class="price-row">
-                    <div class="price-crop">Pepper</div>
-                    <div class="price-bar-wrap"><div class="price-bar" style="width:100%"></div></div>
-                    <div class="price-val">₦800/kg</div>
-                    <div class="price-trend" style="color:var(--muted)">&#9654; 0%</div>
-                  </div>
-                  <div class="price-row">
-                    <div class="price-crop">Maize</div>
-                    <div class="price-bar-wrap"><div class="price-bar" style="width:55%"></div></div>
-                    <div class="price-val">₦280/kg</div>
-                    <div class="price-trend" style="color:var(--red)">&#9660; -2%</div>
-                  </div>
-                  <div class="price-row">
-                    <div class="price-crop">Rice</div>
-                    <div class="price-bar-wrap"><div class="price-bar" style="width:65%"></div></div>
-                    <div class="price-val">₦650/kg</div>
-                    <div class="price-trend" style="color:var(--green-light)">&#9650; +1%</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="how-bg" id="how">
+  <div class="how-inner">
+    <div class="section-label">How It Works</div>
+    <div class="section-title">Three steps. Zero internet required.</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Dial *384*XX#</div>
+        <div class="step-body">Any farmer on any phone dials the HarvestIQ USSD code. Works on MTN, Airtel, Glo, and 9mobile with zero data cost.</div>
       </div>
-
-      <!-- LISTINGS PAGE -->
-      <div class="page" id="page-listings">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.25rem">
-          <input class="form-input" placeholder="Search crop, location..." style="flex:1;max-width:300px" oninput="filterListings(this.value)">
-          <select class="form-input" style="width:140px" onchange="filterByCrop(this.value)">
-            <option value="">All crops</option>
-            <option>Tomato</option>
-            <option>Maize</option>
-            <option>Yam</option>
-            <option>Cassava</option>
-            <option>Onion</option>
-            <option>Pepper</option>
-            <option>Rice</option>
-            <option>Plantain</option>
-          </select>
-          <select class="form-input" style="width:140px">
-            <option>All locations</option>
-            <option>Kano</option>
-            <option>Benue</option>
-            <option>Niger State</option>
-            <option>Lagos</option>
-            <option>Onitsha</option>
-          </select>
-        </div>
-
-        <div id="listings-container">
-          <div class="listing-card" onclick="showListing('Tomato','Benue','200kg','₦380/kg','2348031234567')">
-            <div class="listing-crop-icon">🍅</div>
-            <div class="listing-info">
-              <div class="listing-name">Tomato — 200kg</div>
-              <div class="listing-meta">📍 Makurdi, Benue &nbsp;|&nbsp; Listed 2h ago &nbsp;|&nbsp; Expires in 3 days</div>
-            </div>
-            <div class="listing-price">
-              <div class="listing-price-val">₦380/kg</div>
-              <div class="listing-price-kg">Market rate</div>
-            </div>
-            <div class="listing-actions">
-              <span class="tag tag-green">Active</span>
-            </div>
-          </div>
-          <div class="listing-card" onclick="showListing('Maize','Kano','500kg','₦275/kg','2348045678901')">
-            <div class="listing-crop-icon">🌽</div>
-            <div class="listing-info">
-              <div class="listing-name">Maize — 500kg</div>
-              <div class="listing-meta">📍 Kano &nbsp;|&nbsp; Listed 3h ago &nbsp;|&nbsp; Expires in 3 days</div>
-            </div>
-            <div class="listing-price">
-              <div class="listing-price-val">₦275/kg</div>
-              <div class="listing-price-kg">Below market</div>
-            </div>
-            <div class="listing-actions">
-              <span class="tag tag-green">Active</span>
-            </div>
-          </div>
-          <div class="listing-card" onclick="showListing('Yam','Niger','300kg','₦340/kg','2348056789012')">
-            <div class="listing-crop-icon">🟤</div>
-            <div class="listing-info">
-              <div class="listing-name">Yam — 300kg</div>
-              <div class="listing-meta">📍 Minna, Niger State &nbsp;|&nbsp; Listed 5h ago &nbsp;|&nbsp; Expires in 3 days</div>
-            </div>
-            <div class="listing-price">
-              <div class="listing-price-val">₦340/kg</div>
-              <div class="listing-price-kg">Market rate</div>
-            </div>
-            <div class="listing-actions">
-              <span class="tag tag-amber">Pending</span>
-            </div>
-          </div>
-          <div class="listing-card" onclick="showListing('Onion','Kano','150kg','₦440/kg','2348067890123')">
-            <div class="listing-crop-icon">🧅</div>
-            <div class="listing-info">
-              <div class="listing-name">Onion — 150kg</div>
-              <div class="listing-meta">📍 Kano &nbsp;|&nbsp; Listed 6h ago &nbsp;|&nbsp; Expires in 2 days</div>
-            </div>
-            <div class="listing-price">
-              <div class="listing-price-val">₦440/kg</div>
-              <div class="listing-price-kg">Market rate</div>
-            </div>
-            <div class="listing-actions">
-              <span class="tag tag-green">Active</span>
-            </div>
-          </div>
-          <div class="listing-card" onclick="showListing('Pepper','Lagos','80kg','₦790/kg','2348078901234')">
-            <div class="listing-crop-icon">🌶️</div>
-            <div class="listing-info">
-              <div class="listing-name">Pepper — 80kg</div>
-              <div class="listing-meta">📍 Lagos &nbsp;|&nbsp; Listed 8h ago &nbsp;|&nbsp; Expires in 2 days</div>
-            </div>
-            <div class="listing-price">
-              <div class="listing-price-val">₦790/kg</div>
-              <div class="listing-price-kg">Above market</div>
-            </div>
-            <div class="listing-actions">
-              <span class="tag tag-blue">Matched</span>
-            </div>
-          </div>
-          <div class="listing-card" onclick="showListing('Cassava','Benue','1000kg','₦115/kg','2348089012345')">
-            <div class="listing-crop-icon">🌿</div>
-            <div class="listing-info">
-              <div class="listing-name">Cassava — 1,000kg</div>
-              <div class="listing-meta">📍 Otukpo, Benue &nbsp;|&nbsp; Listed 10h ago &nbsp;|&nbsp; Expires in 3 days</div>
-            </div>
-            <div class="listing-price">
-              <div class="listing-price-val">₦115/kg</div>
-              <div class="listing-price-kg">Market rate</div>
-            </div>
-            <div class="listing-actions">
-              <span class="tag tag-green">Active</span>
-            </div>
-          </div>
-        </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Get instant intelligence</div>
+        <div class="step-body">Check real-time prices at nearby markets, get AI-powered storage advice, or list produce for sale — all in under 60 seconds.</div>
       </div>
-
-      <!-- PRICES PAGE -->
-      <div class="page" id="page-prices">
-        <div style="display:flex;gap:10px;margin-bottom:1.25rem">
-          <select class="form-input" style="width:160px">
-            <option>Kano</option>
-            <option>Lagos (Mile 12)</option>
-            <option>Onitsha</option>
-            <option>Ibadan</option>
-            <option>Makurdi (Benue)</option>
-          </select>
-          <select class="form-input" style="width:140px">
-            <option>Today</option>
-            <option>This week</option>
-            <option>This month</option>
-          </select>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">Commodity prices — Kano market</div>
-            <span style="font-size:11px;color:var(--muted)">Updated 30 min ago</span>
-          </div>
-          <div class="card-body" style="padding:0">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Crop</th>
-                  <th>Today</th>
-                  <th>Yesterday</th>
-                  <th>Change</th>
-                  <th>7-day trend</th>
-                  <th>Signal</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td><strong>Tomato</strong></td><td>₦382/kg</td><td>₦354/kg</td><td style="color:var(--green-light)">+₦28 ▲</td><td>&#9650;&#9650;&#9650;&#9654;&#9650;</td><td><span class="tag tag-green">Buy now</span></td></tr>
-                <tr><td><strong>Onion</strong></td><td>₦450/kg</td><td>₦437/kg</td><td style="color:var(--green-light)">+₦13 ▲</td><td>&#9650;&#9654;&#9650;&#9650;&#9654;</td><td><span class="tag tag-green">Buy now</span></td></tr>
-                <tr><td><strong>Pepper</strong></td><td>₦800/kg</td><td>₦800/kg</td><td style="color:var(--muted)">₦0 &#9654;</td><td>&#9654;&#9654;&#9654;&#9650;&#9654;</td><td><span class="tag tag-amber">Hold</span></td></tr>
-                <tr><td><strong>Maize</strong></td><td>₦280/kg</td><td>₦286/kg</td><td style="color:var(--red)">-₦6 ▼</td><td>&#9660;&#9654;&#9660;&#9660;&#9654;</td><td><span class="tag tag-red">Wait</span></td></tr>
-                <tr><td><strong>Rice</strong></td><td>₦650/kg</td><td>₦643/kg</td><td style="color:var(--green-light)">+₦7 ▲</td><td>&#9650;&#9650;&#9654;&#9650;&#9654;</td><td><span class="tag tag-green">Buy now</span></td></tr>
-                <tr><td><strong>Yam</strong></td><td>₦350/kg</td><td>₦360/kg</td><td style="color:var(--red)">-₦10 ▼</td><td>&#9660;&#9660;&#9654;&#9654;&#9660;</td><td><span class="tag tag-red">Wait</span></td></tr>
-                <tr><td><strong>Cassava</strong></td><td>₦120/kg</td><td>₦118/kg</td><td style="color:var(--green-light)">+₦2 ▲</td><td>&#9650;&#9654;&#9654;&#9650;&#9650;</td><td><span class="tag tag-amber">Hold</span></td></tr>
-                <tr><td><strong>Plantain</strong></td><td>₦220/kg</td><td>₦215/kg</td><td style="color:var(--green-light)">+₦5 ▲</td><td>&#9650;&#9650;&#9654;&#9650;&#9650;</td><td><span class="tag tag-green">Buy now</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Sell at the right price</div>
+        <div class="step-body">Buyers contact farmers directly. No middlemen. Price alert SMS fires the moment your target price is reached.</div>
       </div>
-
-      <!-- DEMAND PAGE -->
-      <div class="page" id="page-demand">
-        <div class="card" style="max-width:560px">
-          <div class="card-header">
-            <div class="card-title">Post a demand request</div>
-          </div>
-          <div class="card-body">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Crop</label>
-                <select class="form-input">
-                  <option>Tomato</option><option>Maize</option><option>Yam</option>
-                  <option>Cassava</option><option>Onion</option><option>Pepper</option>
-                  <option>Rice</option><option>Plantain</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Quantity needed (kg)</label>
-                <input class="form-input" type="number" placeholder="e.g. 500">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Max price per kg (₦)</label>
-                <input class="form-input" type="number" placeholder="e.g. 400">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Preferred location</label>
-                <select class="form-input">
-                  <option>Any</option><option>Kano</option><option>Benue</option>
-                  <option>Niger State</option><option>Lagos</option><option>Onitsha</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group" style="margin-bottom:1rem">
-              <label class="form-label">Needed by</label>
-              <input class="form-input" type="date">
-            </div>
-            <div class="form-group" style="margin-bottom:1.25rem">
-              <label class="form-label">Additional notes (optional)</label>
-              <textarea class="form-input" rows="3" placeholder="Quality requirements, delivery details..."></textarea>
-            </div>
-            <button class="btn btn-primary" style="width:100%" onclick="submitDemand()">Post demand request</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- ALERTS PAGE -->
-      <div class="page" id="page-alerts">
-        <div class="two-col">
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">Active price alerts</div>
-              <button class="btn btn-primary" style="font-size:12px;padding:5px 12px" onclick="navigate('demand')">+ New alert</button>
-            </div>
-            <div class="card-body" style="padding:0">
-              <table class="table">
-                <thead>
-                  <tr><th>Crop</th><th>Trigger</th><th>Market</th><th>Status</th><th></th></tr>
-                </thead>
-                <tbody>
-                  <tr><td><strong>Tomato</strong></td><td>&gt; ₦400/kg</td><td>Kano</td><td><span class="tag tag-green">Watching</span></td><td><button class="btn" style="font-size:11px;padding:3px 8px;color:var(--red);border-color:var(--red)">Remove</button></td></tr>
-                  <tr><td><strong>Maize</strong></td><td>&gt; ₦300/kg</td><td>Benue</td><td><span class="tag tag-green">Watching</span></td><td><button class="btn" style="font-size:11px;padding:3px 8px;color:var(--red);border-color:var(--red)">Remove</button></td></tr>
-                  <tr><td><strong>Onion</strong></td><td>&gt; ₦500/kg</td><td>Kano</td><td><span class="tag tag-amber">Near</span></td><td><button class="btn" style="font-size:11px;padding:3px 8px;color:var(--red);border-color:var(--red)">Remove</button></td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">Recent notifications</div>
-            </div>
-            <div class="card-body" style="padding:.75rem 1.25rem">
-              <div class="alert-row">
-                <div class="alert-dot" style="background:var(--green-light)"></div>
-                <div class="alert-text">New listing: 200kg Tomato in Benue at ₦380/kg</div>
-                <div class="alert-time">2h ago</div>
-              </div>
-              <div class="alert-row">
-                <div class="alert-dot" style="background:var(--amber)"></div>
-                <div class="alert-text">Onion approaching alert threshold — ₦450/kg in Kano</div>
-                <div class="alert-time">4h ago</div>
-              </div>
-              <div class="alert-row">
-                <div class="alert-dot" style="background:var(--blue)"></div>
-                <div class="alert-text">Your demand for 500kg Maize matched with a farmer</div>
-                <div class="alert-time">1d ago</div>
-              </div>
-              <div class="alert-row">
-                <div class="alert-dot" style="background:var(--muted)"></div>
-                <div class="alert-text">Pepper price stable at ₦800/kg for 3 days</div>
-                <div class="alert-time">2d ago</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </div>
 
-<!-- LISTING DETAIL MODAL -->
-<div class="modal-overlay" id="listing-modal" onclick="closeModal(event)">
-  <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-title" id="modal-title">Listing details</div>
-    <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
-      <div style="display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border)">
-        <span style="color:var(--muted)">Crop</span><strong id="modal-crop">—</strong>
-      </div>
-      <div style="display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border)">
-        <span style="color:var(--muted)">Quantity</span><strong id="modal-qty">—</strong>
-      </div>
-      <div style="display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border)">
-        <span style="color:var(--muted)">Location</span><strong id="modal-loc">—</strong>
-      </div>
-      <div style="display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border)">
-        <span style="color:var(--muted)">Price</span><strong id="modal-price" style="color:var(--green-mid)">—</strong>
-      </div>
-      <div style="display:flex;justify-content:space-between;padding:.6rem 0">
-        <span style="color:var(--muted)">Farmer contact</span>
-        <a id="modal-phone" href="#" style="color:var(--blue);font-weight:500">—</a>
+<section>
+  <div class="section-label">Live Demo</div>
+  <div class="section-title">What a farmer sees on their phone</div>
+  <div class="demo-wrap">
+    <div class="phone">
+      <div class="phone-header">*384*001# — HarvestIQ USSD</div>
+      <div class="phone-screen">
+        <div class="phone-title">Welcome to HarvestIQ</div>
+        1. Check crop prices<br>
+        2. Storage advice<br>
+        3. List produce for sale<br>
+        4. Set price alert<br><br>
+        <span style="color:#aaa">Farmer selects 1 → Tomato → Kano</span><br><br>
+        <span style="color:#fff">Tomato - Kano</span><br>
+        Today: N380/kg (rising)<br>
+        Yesterday: N350/kg<br>
+        Tip: Good time to sell<br>
       </div>
     </div>
-    <div class="modal-footer">
-      <button class="btn" onclick="document.getElementById('listing-modal').classList.remove('open')">Close</button>
-      <button class="btn btn-amber" id="modal-call-btn">Call farmer</button>
+    <div class="demo-points">
+      <div class="demo-point"><div class="demo-dot"></div><div class="demo-text"><strong>Real-time prices</strong> from 6 major Nigerian markets — Kano, Lagos Mile 12, Onitsha, Ibadan, Kaduna, Makurdi</div></div>
+      <div class="demo-point"><div class="demo-dot"></div><div class="demo-text"><strong>AI storage advisory</strong> powered by AWS Bedrock — crop-specific, quantity-aware, weather-adjusted</div></div>
+      <div class="demo-point"><div class="demo-dot"></div><div class="demo-text"><strong>Produce listings</strong> visible to traders and aggregators on the buyer dashboard in real time</div></div>
+      <div class="demo-point"><div class="demo-dot"></div><div class="demo-text"><strong>Price alerts via SMS</strong> — farmers set a floor price and get notified the moment the market reaches it</div></div>
     </div>
   </div>
+</section>
+
+<div class="cta-section" id="contact">
+  <div class="ussd-code">*384*001#</div>
+  <h2>Ready to stop losing your harvest?</h2>
+  <p>HarvestIQ is currently in beta. Join the waitlist to be among the first farmers and buyers onboarded in Benue and Kano states.</p>
+  <a href="mailto:harvestiqng@gmail.com" class="btn-primary" style="display:inline-block;background:var(--amber);color:var(--dark);padding:14px 32px;border-radius:8px;font-weight:700;font-size:15px">Join the Waitlist →</a>
 </div>
 
-<!-- DEMAND SUCCESS MODAL -->
-<div class="modal-overlay" id="demand-modal" onclick="closeDemandModal(event)">
-  <div class="modal" onclick="event.stopPropagation()" style="text-align:center">
-    <div style="font-size:2rem;margin-bottom:.75rem">✅</div>
-    <div class="modal-title">Demand posted!</div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:1.25rem;line-height:1.6">Your request has been posted. Matching farmers will be notified via SMS. You'll receive an alert when a farmer responds.</p>
-    <button class="btn btn-primary" style="width:100%" onclick="document.getElementById('demand-modal').classList.remove('open')">Done</button>
-  </div>
-</div>
+<footer>
+  <strong>HarvestIQ</strong> — Postharvest intelligence for Nigerian smallholder farmers<br>
+  Minna, Niger State, Nigeria &nbsp;|&nbsp; harvestiqng@gmail.com<br><br>
+  © 2026 HarvestIQ. Built with AWS & Africa's Talking.
+</footer>
 
-<script>
-function navigate(page) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'))
-  document.getElementById('page-' + page).classList.add('active')
-  const titles = {dashboard:'Dashboard',listings:'Produce Listings',prices:'Market Prices',demand:'Post Demand',alerts:'Alerts'}
-  document.getElementById('page-title').textContent = titles[page] || page
-  event.currentTarget && event.currentTarget.classList.add('active')
-}
-
-function showListing(crop, loc, qty, price, phone) {
-  document.getElementById('modal-crop').textContent = crop
-  document.getElementById('modal-loc').textContent = loc
-  document.getElementById('modal-qty').textContent = qty
-  document.getElementById('modal-price').textContent = price
-  document.getElementById('modal-phone').textContent = '+' + phone
-  document.getElementById('modal-call-btn').onclick = () => { window.location.href = 'tel:+' + phone }
-  document.getElementById('listing-modal').classList.add('open')
-}
-
-function openModal() { navigate('demand') }
-
-function closeModal(e) {
-  if (e.target === document.getElementById('listing-modal')) {
-    document.getElementById('listing-modal').classList.remove('open')
-  }
-}
-
-function closeDemandModal(e) {
-  if (e.target === document.getElementById('demand-modal')) {
-    document.getElementById('demand-modal').classList.remove('open')
-  }
-}
-
-function submitDemand() {
-  document.getElementById('demand-modal').classList.add('open')
-}
-
-function filterListings(val) {
-  const cards = document.querySelectorAll('#listings-container .listing-card')
-  cards.forEach(c => {
-    c.style.display = c.textContent.toLowerCase().includes(val.toLowerCase()) ? 'flex' : 'none'
-  })
-}
-
-function filterByCrop(val) {
-  const cards = document.querySelectorAll('#listings-container .listing-card')
-  cards.forEach(c => {
-    c.style.display = (!val || c.textContent.includes(val)) ? 'flex' : 'none'
-  })
-}
-</script>
 </body>
 </html>
