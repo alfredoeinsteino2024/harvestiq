@@ -12,14 +12,10 @@
   }
   body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text)}
   a{text-decoration:none;color:inherit}
-
-  /* NAV */
   nav{background:var(--dark);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
   .logo{font-size:1.4rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px}
   .logo span{color:var(--amber)}
   .nav-cta{background:var(--amber);color:var(--dark);padding:8px 20px;border-radius:6px;font-weight:600;font-size:14px}
-
-  /* HERO */
   .hero{background:linear-gradient(135deg,var(--dark) 0%,#1a3a1a 100%);color:#fff;padding:5rem 2rem;text-align:center}
   .hero-badge{display:inline-block;background:rgba(245,166,35,0.15);border:1px solid var(--amber);color:var(--amber);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:500;margin-bottom:1.5rem}
   .hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.15;margin-bottom:1.25rem;max-width:800px;margin-left:auto;margin-right:auto}
@@ -28,28 +24,30 @@
   .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   .btn-primary{background:var(--green-light);color:#fff;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px}
   .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3);padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px}
-
-  /* STATS */
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;background:var(--amber)}
   .stat{padding:1.5rem 2rem;text-align:center;border-right:1px solid rgba(0,0,0,0.1)}
   .stat:last-child{border-right:none}
   .stat-num{font-size:2rem;font-weight:700;color:var(--dark)}
   .stat-lbl{font-size:13px;color:rgba(0,0,0,0.65);margin-top:4px}
-
-  /* SECTION */
   section{padding:4rem 2rem;max-width:1100px;margin:0 auto}
   .section-label{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green-light);margin-bottom:.75rem}
   .section-title{font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;color:var(--dark);margin-bottom:1rem;line-height:1.25}
   .section-sub{font-size:1rem;color:var(--muted);line-height:1.7;max-width:600px}
-
-  /* PROBLEM */
   .problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:2.5rem}
   .problem-card{background:#fff;border:1px solid #e8f0e8;border-radius:12px;padding:1.5rem;border-left:4px solid var(--green-light)}
   .problem-icon{font-size:1.75rem;margin-bottom:.75rem}
   .problem-title{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:.5rem}
   .problem-body{font-size:13px;color:var(--muted);line-height:1.6}
 
-  /* HOW IT WORKS */
+  /* VIDEO SECTION */
+  .video-section{background:var(--dark);padding:4rem 2rem}
+  .video-inner{max-width:900px;margin:0 auto;text-align:center}
+  .video-label{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.75rem}
+  .video-title{font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;color:#fff;margin-bottom:1rem}
+  .video-sub{font-size:1rem;color:rgba(255,255,255,0.65);margin-bottom:2rem;line-height:1.7}
+  .video-wrap{position:relative;padding-bottom:56.25%;height:0;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);border:2px solid rgba(245,166,35,0.3)}
+  .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+
   .how-bg{background:#fff;padding:4rem 2rem}
   .how-inner{max-width:1100px;margin:0 auto}
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:2.5rem}
@@ -57,9 +55,6 @@
   .step-num{width:48px;height:48px;border-radius:50%;background:var(--green);color:#fff;font-size:1.2rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
   .step-title{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:.5rem}
   .step-body{font-size:13px;color:var(--muted);line-height:1.6}
-  .step-arrow{display:none}
-
-  /* USSD DEMO */
   .demo-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2.5rem}
   .phone{background:var(--dark);border-radius:24px;padding:2rem 1.5rem;color:#fff;font-family:'Courier New',monospace;font-size:13px;line-height:1.8;max-width:300px}
   .phone-header{font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:1rem;text-align:center}
@@ -70,23 +65,12 @@
   .demo-dot{width:10px;height:10px;border-radius:50%;background:var(--green-light);flex-shrink:0;margin-top:5px}
   .demo-text{font-size:14px;color:var(--muted);line-height:1.6}
   .demo-text strong{color:var(--dark)}
-
-  /* CATEGORIES */
-  .cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:2rem}
-  .cat{background:#fff;border:1px solid #e8f0e8;border-radius:10px;padding:1rem;text-align:center}
-  .cat-icon{font-size:1.5rem;margin-bottom:.5rem}
-  .cat-name{font-size:13px;font-weight:600;color:var(--dark)}
-
-  /* CTA */
   .cta-section{background:linear-gradient(135deg,var(--green) 0%,#1a4a1a 100%);color:#fff;padding:5rem 2rem;text-align:center}
   .cta-section h2{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:700;margin-bottom:1rem}
   .cta-section p{color:rgba(255,255,255,0.75);font-size:1rem;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
   .ussd-code{display:inline-block;background:var(--amber);color:var(--dark);font-size:1.5rem;font-weight:700;padding:12px 32px;border-radius:8px;font-family:monospace;margin-bottom:1.5rem}
-
-  /* FOOTER */
   footer{background:var(--dark);color:rgba(255,255,255,0.5);text-align:center;padding:2rem;font-size:13px}
   footer strong{color:#fff}
-
   @media(max-width:700px){
     .demo-wrap{grid-template-columns:1fr}
     .phone{max-width:100%}
@@ -98,8 +82,8 @@
 
 <nav>
   <div class="logo">🌾 Harvest<span>IQ</span></div>
-  <div style="display:flex; gap:12px;">
-    <a href="buyer-dashboard.html" class="nav-cta" style="background:var(--green-light); color:#fff;">Buyer Login</a>
+  <div style="display:flex;gap:12px;">
+    <a href="buyer-dashboard.html" class="nav-cta" style="background:var(--green-light);color:#fff;">Buyer Login →</a>
     <a href="mailto:harvestiqng@gmail.com" class="nav-cta">Contact Us</a>
   </div>
 </nav>
@@ -109,7 +93,7 @@
   <h1>Stop Losing Your Harvest.<br>Start Selling <span>Smarter.</span></h1>
   <p>HarvestIQ delivers real-time market prices, AI-powered storage advice, and direct buyer connections — all via USSD. No smartphone. No internet. No middlemen.</p>
   <div class="hero-btns">
-    <a href="#how" class="btn-primary">See How It Works</a>
+    <a href="#video" class="btn-primary">Watch Demo</a>
     <a href="buyer-dashboard.html" class="btn-secondary">Buyer Dashboard →</a>
   </div>
 </div>
@@ -149,6 +133,18 @@
   </div>
 </section>
 
+<!-- VIDEO SECTION -->
+<div class="video-section" id="video">
+  <div class="video-inner">
+    <div class="video-label">Live Demo</div>
+    <div class="video-title">See HarvestIQ in Action</div>
+    <div class="video-sub">Watch a complete demo — from checking real-time crop prices, to getting AI storage advice, to listing produce for sale. All via USSD on any phone.</div>
+    <div class="video-wrap">
+      <iframe src="https://www.loom.com/embed/30ece7a2b49e421083d1cd05c360e1ff" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
 <div class="how-bg" id="how">
   <div class="how-inner">
     <div class="section-label">How It Works</div>
@@ -156,7 +152,7 @@
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <div class="step-title">Dial *384*XX#</div>
+        <div class="step-title">Dial *384*14367#</div>
         <div class="step-body">Any farmer on any phone dials the HarvestIQ USSD code. Works on MTN, Airtel, Glo, and 9mobile with zero data cost.</div>
       </div>
       <div class="step">
@@ -187,8 +183,8 @@
         4. Set price alert<br><br>
         <span style="color:#aaa">Farmer selects 1 → Tomato → Kano</span><br><br>
         <span style="color:#fff">Tomato - Kano</span><br>
-        Today: N380/kg (rising)<br>
-        Yesterday: N350/kg<br>
+        Today: N382/kg (rising)<br>
+        Yesterday: N352/kg<br>
         Tip: Good time to sell<br>
       </div>
     </div>
