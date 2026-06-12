@@ -17,8 +17,6 @@
   --radius:10px;--radius-lg:16px;
 }
 body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
-
-/* SIDEBAR */
 .layout{display:flex;min-height:100vh}
 .sidebar{width:220px;background:var(--green);display:flex;flex-direction:column;padding:0;flex-shrink:0;position:sticky;top:0;height:100vh}
 .sidebar-logo{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,0.08)}
@@ -36,8 +34,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .user-avatar{width:32px;height:32px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--green);flex-shrink:0}
 .user-name{font-size:13px;font-weight:500;color:#fff}
 .user-role{font-size:11px;color:rgba(255,255,255,0.4)}
-
-/* MAIN */
 .main{flex:1;overflow-y:auto}
 .topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:.85rem 1.75rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
 .topbar-title{font-size:15px;font-weight:600;color:var(--text)}
@@ -45,19 +41,16 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .badge-live{display:inline-flex;align-items:center;gap:5px;background:#EAF3DE;color:#3B6D11;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px}
 .badge-live::before{content:'';width:6px;height:6px;border-radius:50%;background:#4CAF50;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.badge-error{display:inline-flex;align-items:center;gap:5px;background:#FCEBEB;color:#A32D2D;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px}
 .btn{padding:7px 14px;border-radius:var(--radius);font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text);display:inline-flex;align-items:center;gap:6px;transition:all .15s}
 .btn:hover{background:var(--surface2)}
 .btn-primary{background:var(--green-mid);color:#fff;border-color:var(--green-mid)}
 .btn-primary:hover{background:var(--green)}
 .btn-amber{background:var(--amber);color:var(--green);border-color:var(--amber);font-weight:600}
 .btn-amber:hover{background:var(--amber-dark)}
-
-/* CONTENT */
 .content{padding:1.5rem 1.75rem}
 .page{display:none}
 .page.active{display:block}
-
-/* METRICS ROW */
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:1.5rem}
 .metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.1rem 1.25rem}
 .metric-label{font-size:12px;color:var(--muted);margin-bottom:.4rem;display:flex;align-items:center;gap:6px}
@@ -65,17 +58,11 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .metric-sub{font-size:12px;color:var(--muted);margin-top:.3rem}
 .metric-up{color:var(--green-light)}
 .metric-down{color:var(--red)}
-
-/* TWO COL */
 .two-col{display:grid;grid-template-columns:1.6fr 1fr;gap:16px;margin-bottom:1.5rem}
-
-/* CARD */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
 .card-header{padding:.9rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .card-title{font-size:13.5px;font-weight:600;color:var(--text)}
 .card-body{padding:1.25rem}
-
-/* TABLE */
 .table{width:100%;border-collapse:collapse;font-size:13px}
 .table th{text-align:left;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding:.6rem .75rem;border-bottom:1px solid var(--border)}
 .table td{padding:.7rem .75rem;border-bottom:1px solid var(--border);color:var(--text)}
@@ -87,8 +74,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .tag-amber{background:#FAEEDA;color:#854F0B}
 .tag-blue{background:#E6F1FB;color:#185FA5}
 .tag-red{background:#FCEBEB;color:#A32D2D}
-
-/* LISTINGS */
 .listing-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.1rem 1.25rem;display:flex;align-items:center;gap:1rem;cursor:pointer;transition:all .15s;margin-bottom:10px}
 .listing-card:hover{border-color:var(--green-mid);box-shadow:0 2px 8px rgba(45,106,45,0.08)}
 .listing-crop-icon{width:44px;height:44px;border-radius:10px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
@@ -99,8 +84,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .listing-price-val{font-size:15px;font-weight:600;color:var(--green-mid);font-family:var(--mono)}
 .listing-price-kg{font-size:11px;color:var(--muted)}
 .listing-actions{display:flex;gap:8px}
-
-/* PRICE CHART */
 .price-rows{display:flex;flex-direction:column;gap:10px}
 .price-row{display:flex;align-items:center;gap:10px}
 .price-crop{font-size:13px;font-weight:500;width:80px;flex-shrink:0}
@@ -108,37 +91,28 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .price-bar{height:8px;border-radius:4px;background:var(--green-light);transition:width .6s ease}
 .price-val{font-size:12px;font-weight:500;font-family:var(--mono);width:65px;text-align:right;color:var(--text)}
 .price-trend{font-size:11px;width:55px;text-align:right}
-
-/* DEMAND FORM */
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
 .form-group{display:flex;flex-direction:column;gap:4px}
 .form-label{font-size:12px;font-weight:500;color:var(--muted)}
 .form-input{padding:8px 10px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px;background:var(--surface);color:var(--text);font-family:var(--font);outline:none;transition:border-color .15s}
 .form-input:focus{border-color:var(--green-mid)}
 select.form-input{cursor:pointer}
-
-/* MAP PLACEHOLDER */
-.map-placeholder{background:var(--surface2);border-radius:var(--radius);height:200px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--muted);font-size:13px;border:1px dashed var(--border)}
-
-/* ALERTS */
 .alert-row{display:flex;align-items:center;gap:10px;padding:.7rem 0;border-bottom:1px solid var(--border)}
 .alert-row:last-child{border-bottom:none}
 .alert-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .alert-text{flex:1;font-size:13px;color:var(--text)}
 .alert-time{font-size:11px;color:var(--muted)}
-
-/* EMPTY */
 .empty{text-align:center;padding:3rem 1rem;color:var(--muted)}
 .empty-icon{font-size:2rem;margin-bottom:.75rem;opacity:.4}
 .empty-text{font-size:13px}
-
-/* MODAL OVERLAY */
+.skeleton{background:linear-gradient(90deg,var(--surface2) 25%,#e4ebe0 50%,var(--surface2) 75%);background-size:200% 100%;animation:loading 1.5s infinite;border-radius:6px}
+@keyframes loading{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skeleton-row{height:40px;margin-bottom:8px}
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:100;align-items:center;justify-content:center}
 .modal-overlay.open{display:flex}
 .modal{background:var(--surface);border-radius:var(--radius-lg);padding:1.5rem;width:420px;max-width:95vw}
 .modal-title{font-size:15px;font-weight:600;margin-bottom:1.25rem}
 .modal-footer{display:flex;gap:8px;justify-content:flex-end;margin-top:1.25rem}
-
 @media(max-width:900px){
   .sidebar{display:none}
   .metrics{grid-template-columns:1fr 1fr}
@@ -149,7 +123,6 @@ select.form-input{cursor:pointer}
 <body>
 
 <div class="layout">
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-logo">
       <div class="logo-text">Harvest<span>IQ</span></div>
@@ -177,21 +150,20 @@ select.form-input{cursor:pointer}
     <div class="sidebar-bottom">
       <div class="sidebar-user">
         <div class="user-avatar">TA</div>
-<div>
-  <div class="user-name">Toluwanimi Alfred</div>
-  <div class="user-role">HarvestIQ Admin</div>
-</div>
+        <div>
+          <div class="user-name">Toluwanimi Alfred</div>
+          <div class="user-role">HarvestIQ Admin</div>
+        </div>
       </div>
     </div>
   </aside>
 
-  <!-- MAIN -->
   <div class="main">
     <div class="topbar">
       <div class="topbar-title" id="page-title">Dashboard</div>
       <div class="topbar-right">
-        <div class="badge-live">Live data</div>
-        <button class="btn btn-amber" onclick="openModal()">+ Post Demand</button>
+        <div class="badge-live" id="connection-badge">Live data</div>
+        <button class="btn btn-amber" onclick="navigate('demand')">+ Post Demand</button>
       </div>
     </div>
 
@@ -202,28 +174,27 @@ select.form-input{cursor:pointer}
         <div class="metrics">
           <div class="metric">
             <div class="metric-label">&#9642; Active Listings</div>
-            <div class="metric-value">24</div>
-            <div class="metric-sub metric-up">&#9650; 6 new today</div>
+            <div class="metric-value" id="m-listings">—</div>
+            <div class="metric-sub" id="m-listings-sub">loading...</div>
           </div>
           <div class="metric">
             <div class="metric-label">&#9650; Avg Tomato Price</div>
-            <div class="metric-value">₦382</div>
-            <div class="metric-sub metric-up">&#9650; +8% this week</div>
+            <div class="metric-value" id="m-tomato">—</div>
+            <div class="metric-sub" id="m-tomato-sub">loading...</div>
           </div>
           <div class="metric">
-            <div class="metric-label">&#9632; Farmers Registered</div>
-            <div class="metric-value">147</div>
-            <div class="metric-sub">across 3 states</div>
+            <div class="metric-label">&#9632; Tracked Crops</div>
+            <div class="metric-value" id="m-crops">—</div>
+            <div class="metric-sub">across 6 markets</div>
           </div>
           <div class="metric">
-            <div class="metric-label">&#9679; Matches This Week</div>
-            <div class="metric-value">12</div>
-            <div class="metric-sub metric-up">&#9650; 3 pending confirm</div>
+            <div class="metric-label">&#9679; Markets Live</div>
+            <div class="metric-value" id="m-markets">—</div>
+            <div class="metric-sub">price feeds active</div>
           </div>
         </div>
 
         <div class="two-col">
-          <!-- RECENT LISTINGS -->
           <div class="card">
             <div class="card-header">
               <div class="card-title">Recent produce listings</div>
@@ -240,33 +211,18 @@ select.form-input{cursor:pointer}
                     <th>Status</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr onclick="showListing('Tomato','Benue','200kg','₦380/kg','2348031234567')">
-                    <td><strong>Tomato</strong></td><td>200kg</td><td>Makurdi, Benue</td><td>2h ago</td><td><span class="tag tag-green">Active</span></td>
-                  </tr>
-                  <tr onclick="showListing('Maize','Kano','500kg','₦275/kg','2348045678901')">
-                    <td><strong>Maize</strong></td><td>500kg</td><td>Kano</td><td>3h ago</td><td><span class="tag tag-green">Active</span></td>
-                  </tr>
-                  <tr onclick="showListing('Yam','Niger','300kg','₦340/kg','2348056789012')">
-                    <td><strong>Yam</strong></td><td>300kg</td><td>Minna, Niger</td><td>5h ago</td><td><span class="tag tag-amber">Pending</span></td>
-                  </tr>
-                  <tr onclick="showListing('Onion','Kano','150kg','₦440/kg','2348067890123')">
-                    <td><strong>Onion</strong></td><td>150kg</td><td>Kano</td><td>6h ago</td><td><span class="tag tag-green">Active</span></td>
-                  </tr>
-                  <tr onclick="showListing('Pepper','Lagos','80kg','₦790/kg','2348078901234')">
-                    <td><strong>Pepper</strong></td><td>80kg</td><td>Lagos</td><td>8h ago</td><td><span class="tag tag-blue">Matched</span></td>
-                  </tr>
+                <tbody id="dash-listings-body">
+                  <tr><td colspan="5"><div class="skeleton skeleton-row"></div></td></tr>
                 </tbody>
               </table>
             </div>
           </div>
 
-          <!-- ALERTS + PRICES -->
           <div style="display:flex;flex-direction:column;gap:16px">
             <div class="card">
               <div class="card-header">
                 <div class="card-title">Price alerts</div>
-                <span class="tag tag-amber">3 active</span>
+                <span class="tag tag-amber">Demo</span>
               </div>
               <div class="card-body" style="padding:.75rem 1.25rem">
                 <div class="alert-row">
@@ -290,40 +246,13 @@ select.form-input{cursor:pointer}
             <div class="card">
               <div class="card-header">
                 <div class="card-title">Today's top prices</div>
-                <span style="font-size:11px;color:var(--muted)">Kano market</span>
+                <span style="font-size:11px;color:var(--muted)" id="dash-prices-market">Kano market</span>
               </div>
               <div class="card-body">
-                <div class="price-rows">
-                  <div class="price-row">
-                    <div class="price-crop">Tomato</div>
-                    <div class="price-bar-wrap"><div class="price-bar" style="width:76%"></div></div>
-                    <div class="price-val">₦382/kg</div>
-                    <div class="price-trend" style="color:var(--green-light)">&#9650; +8%</div>
-                  </div>
-                  <div class="price-row">
-                    <div class="price-crop">Onion</div>
-                    <div class="price-bar-wrap"><div class="price-bar" style="width:88%"></div></div>
-                    <div class="price-val">₦450/kg</div>
-                    <div class="price-trend" style="color:var(--green-light)">&#9650; +3%</div>
-                  </div>
-                  <div class="price-row">
-                    <div class="price-crop">Pepper</div>
-                    <div class="price-bar-wrap"><div class="price-bar" style="width:100%"></div></div>
-                    <div class="price-val">₦800/kg</div>
-                    <div class="price-trend" style="color:var(--muted)">&#9654; 0%</div>
-                  </div>
-                  <div class="price-row">
-                    <div class="price-crop">Maize</div>
-                    <div class="price-bar-wrap"><div class="price-bar" style="width:55%"></div></div>
-                    <div class="price-val">₦280/kg</div>
-                    <div class="price-trend" style="color:var(--red)">&#9660; -2%</div>
-                  </div>
-                  <div class="price-row">
-                    <div class="price-crop">Rice</div>
-                    <div class="price-bar-wrap"><div class="price-bar" style="width:65%"></div></div>
-                    <div class="price-val">₦650/kg</div>
-                    <div class="price-trend" style="color:var(--green-light)">&#9650; +1%</div>
-                  </div>
+                <div class="price-rows" id="dash-prices-rows">
+                  <div class="skeleton skeleton-row"></div>
+                  <div class="skeleton skeleton-row"></div>
+                  <div class="skeleton skeleton-row"></div>
                 </div>
               </div>
             </div>
@@ -335,7 +264,7 @@ select.form-input{cursor:pointer}
       <div class="page" id="page-listings">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.25rem">
           <input class="form-input" placeholder="Search crop, location..." style="flex:1;max-width:300px" oninput="filterListings(this.value)">
-          <select class="form-input" style="width:140px" onchange="filterByCrop(this.value)">
+          <select class="form-input" style="width:140px" id="listings-crop-filter" onchange="loadListings()">
             <option value="">All crops</option>
             <option>Tomato</option>
             <option>Maize</option>
@@ -346,146 +275,50 @@ select.form-input{cursor:pointer}
             <option>Rice</option>
             <option>Plantain</option>
           </select>
-          <select class="form-input" style="width:140px">
-            <option>All locations</option>
-            <option>Kano</option>
-            <option>Benue</option>
-            <option>Niger State</option>
-            <option>Lagos</option>
-            <option>Onitsha</option>
-          </select>
+          <button class="btn" onclick="loadListings()" style="font-size:12px">&#8635; Refresh</button>
         </div>
 
         <div id="listings-container">
-          <div class="listing-card" onclick="showListing('Tomato','Benue','200kg','₦380/kg','2348031234567')">
-            <div class="listing-crop-icon">🍅</div>
-            <div class="listing-info">
-              <div class="listing-name">Tomato — 200kg</div>
-              <div class="listing-meta">📍 Makurdi, Benue &nbsp;|&nbsp; Listed 2h ago &nbsp;|&nbsp; Expires in 3 days</div>
-            </div>
-            <div class="listing-price">
-              <div class="listing-price-val">₦380/kg</div>
-              <div class="listing-price-kg">Market rate</div>
-            </div>
-            <div class="listing-actions">
-              <span class="tag tag-green">Active</span>
-            </div>
-          </div>
-          <div class="listing-card" onclick="showListing('Maize','Kano','500kg','₦275/kg','2348045678901')">
-            <div class="listing-crop-icon">🌽</div>
-            <div class="listing-info">
-              <div class="listing-name">Maize — 500kg</div>
-              <div class="listing-meta">📍 Kano &nbsp;|&nbsp; Listed 3h ago &nbsp;|&nbsp; Expires in 3 days</div>
-            </div>
-            <div class="listing-price">
-              <div class="listing-price-val">₦275/kg</div>
-              <div class="listing-price-kg">Below market</div>
-            </div>
-            <div class="listing-actions">
-              <span class="tag tag-green">Active</span>
-            </div>
-          </div>
-          <div class="listing-card" onclick="showListing('Yam','Niger','300kg','₦340/kg','2348056789012')">
-            <div class="listing-crop-icon">🟤</div>
-            <div class="listing-info">
-              <div class="listing-name">Yam — 300kg</div>
-              <div class="listing-meta">📍 Minna, Niger State &nbsp;|&nbsp; Listed 5h ago &nbsp;|&nbsp; Expires in 3 days</div>
-            </div>
-            <div class="listing-price">
-              <div class="listing-price-val">₦340/kg</div>
-              <div class="listing-price-kg">Market rate</div>
-            </div>
-            <div class="listing-actions">
-              <span class="tag tag-amber">Pending</span>
-            </div>
-          </div>
-          <div class="listing-card" onclick="showListing('Onion','Kano','150kg','₦440/kg','2348067890123')">
-            <div class="listing-crop-icon">🧅</div>
-            <div class="listing-info">
-              <div class="listing-name">Onion — 150kg</div>
-              <div class="listing-meta">📍 Kano &nbsp;|&nbsp; Listed 6h ago &nbsp;|&nbsp; Expires in 2 days</div>
-            </div>
-            <div class="listing-price">
-              <div class="listing-price-val">₦440/kg</div>
-              <div class="listing-price-kg">Market rate</div>
-            </div>
-            <div class="listing-actions">
-              <span class="tag tag-green">Active</span>
-            </div>
-          </div>
-          <div class="listing-card" onclick="showListing('Pepper','Lagos','80kg','₦790/kg','2348078901234')">
-            <div class="listing-crop-icon">🌶️</div>
-            <div class="listing-info">
-              <div class="listing-name">Pepper — 80kg</div>
-              <div class="listing-meta">📍 Lagos &nbsp;|&nbsp; Listed 8h ago &nbsp;|&nbsp; Expires in 2 days</div>
-            </div>
-            <div class="listing-price">
-              <div class="listing-price-val">₦790/kg</div>
-              <div class="listing-price-kg">Above market</div>
-            </div>
-            <div class="listing-actions">
-              <span class="tag tag-blue">Matched</span>
-            </div>
-          </div>
-          <div class="listing-card" onclick="showListing('Cassava','Benue','1000kg','₦115/kg','2348089012345')">
-            <div class="listing-crop-icon">🌿</div>
-            <div class="listing-info">
-              <div class="listing-name">Cassava — 1,000kg</div>
-              <div class="listing-meta">📍 Otukpo, Benue &nbsp;|&nbsp; Listed 10h ago &nbsp;|&nbsp; Expires in 3 days</div>
-            </div>
-            <div class="listing-price">
-              <div class="listing-price-val">₦115/kg</div>
-              <div class="listing-price-kg">Market rate</div>
-            </div>
-            <div class="listing-actions">
-              <span class="tag tag-green">Active</span>
-            </div>
-          </div>
+          <div class="skeleton skeleton-row" style="height:80px"></div>
+          <div class="skeleton skeleton-row" style="height:80px"></div>
+          <div class="skeleton skeleton-row" style="height:80px"></div>
         </div>
       </div>
 
       <!-- PRICES PAGE -->
       <div class="page" id="page-prices">
-        <div style="display:flex;gap:10px;margin-bottom:1.25rem">
-          <select class="form-input" style="width:160px">
+        <div style="display:flex;gap:10px;margin-bottom:1.25rem;align-items:center">
+          <select class="form-input" style="width:200px" id="prices-market-filter" onchange="loadPrices()">
+            <option value="">All markets</option>
             <option>Kano</option>
             <option>Lagos (Mile 12)</option>
             <option>Onitsha</option>
             <option>Ibadan</option>
+            <option>Kaduna</option>
             <option>Makurdi (Benue)</option>
           </select>
-          <select class="form-input" style="width:140px">
-            <option>Today</option>
-            <option>This week</option>
-            <option>This month</option>
-          </select>
+          <button class="btn" onclick="loadPrices()" style="font-size:12px">&#8635; Refresh</button>
+          <span style="font-size:11px;color:var(--muted)" id="prices-updated"></span>
         </div>
         <div class="card">
           <div class="card-header">
-            <div class="card-title">Commodity prices — Kano market</div>
-            <span style="font-size:11px;color:var(--muted)">Updated 30 min ago</span>
+            <div class="card-title" id="prices-title">Live commodity prices</div>
+            <span class="badge-live" id="prices-badge">Live from AWS</span>
           </div>
           <div class="card-body" style="padding:0">
             <table class="table">
               <thead>
                 <tr>
                   <th>Crop</th>
-                  <th>Today</th>
-                  <th>Yesterday</th>
+                  <th>Market</th>
+                  <th>Per kg</th>
+                  <th>Per unit</th>
                   <th>Change</th>
-                  <th>7-day trend</th>
                   <th>Signal</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr><td><strong>Tomato</strong></td><td>₦382/kg</td><td>₦354/kg</td><td style="color:var(--green-light)">+₦28 ▲</td><td>&#9650;&#9650;&#9650;&#9654;&#9650;</td><td><span class="tag tag-green">Buy now</span></td></tr>
-                <tr><td><strong>Onion</strong></td><td>₦450/kg</td><td>₦437/kg</td><td style="color:var(--green-light)">+₦13 ▲</td><td>&#9650;&#9654;&#9650;&#9650;&#9654;</td><td><span class="tag tag-green">Buy now</span></td></tr>
-                <tr><td><strong>Pepper</strong></td><td>₦800/kg</td><td>₦800/kg</td><td style="color:var(--muted)">₦0 &#9654;</td><td>&#9654;&#9654;&#9654;&#9650;&#9654;</td><td><span class="tag tag-amber">Hold</span></td></tr>
-                <tr><td><strong>Maize</strong></td><td>₦280/kg</td><td>₦286/kg</td><td style="color:var(--red)">-₦6 ▼</td><td>&#9660;&#9654;&#9660;&#9660;&#9654;</td><td><span class="tag tag-red">Wait</span></td></tr>
-                <tr><td><strong>Rice</strong></td><td>₦650/kg</td><td>₦643/kg</td><td style="color:var(--green-light)">+₦7 ▲</td><td>&#9650;&#9650;&#9654;&#9650;&#9654;</td><td><span class="tag tag-green">Buy now</span></td></tr>
-                <tr><td><strong>Yam</strong></td><td>₦350/kg</td><td>₦360/kg</td><td style="color:var(--red)">-₦10 ▼</td><td>&#9660;&#9660;&#9654;&#9654;&#9660;</td><td><span class="tag tag-red">Wait</span></td></tr>
-                <tr><td><strong>Cassava</strong></td><td>₦120/kg</td><td>₦118/kg</td><td style="color:var(--green-light)">+₦2 ▲</td><td>&#9650;&#9654;&#9654;&#9650;&#9650;</td><td><span class="tag tag-amber">Hold</span></td></tr>
-                <tr><td><strong>Plantain</strong></td><td>₦220/kg</td><td>₦215/kg</td><td style="color:var(--green-light)">+₦5 ▲</td><td>&#9650;&#9650;&#9654;&#9650;&#9650;</td><td><span class="tag tag-green">Buy now</span></td></tr>
+              <tbody id="prices-body">
+                <tr><td colspan="6"><div class="skeleton skeleton-row"></div></td></tr>
               </tbody>
             </table>
           </div>
@@ -502,21 +335,21 @@ select.form-input{cursor:pointer}
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">Crop</label>
-                <select class="form-input">
+                <select class="form-input" id="demand-crop" onchange="updateDemandUnit()">
                   <option>Tomato</option><option>Maize</option><option>Yam</option>
                   <option>Cassava</option><option>Onion</option><option>Pepper</option>
                   <option>Rice</option><option>Plantain</option>
                 </select>
               </div>
               <div class="form-group">
-                <label class="form-label">Quantity needed (kg)</label>
-                <input class="form-input" type="number" placeholder="e.g. 500">
+                <label class="form-label" id="demand-qty-label">Quantity needed (bags)</label>
+                <input class="form-input" type="number" id="demand-qty" placeholder="e.g. 10">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Max price per kg (₦)</label>
-                <input class="form-input" type="number" placeholder="e.g. 400">
+                <label class="form-label">Max price per unit (₦)</label>
+                <input class="form-input" type="number" placeholder="e.g. 20000">
               </div>
               <div class="form-group">
                 <label class="form-label">Preferred location</label>
@@ -606,10 +439,10 @@ select.form-input{cursor:pointer}
         <span style="color:var(--muted)">Quantity</span><strong id="modal-qty">—</strong>
       </div>
       <div style="display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border)">
-        <span style="color:var(--muted)">Location</span><strong id="modal-loc">—</strong>
+        <span style="color:var(--muted)">Listed</span><strong id="modal-loc">—</strong>
       </div>
       <div style="display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border)">
-        <span style="color:var(--muted)">Price</span><strong id="modal-price" style="color:var(--green-mid)">—</strong>
+        <span style="color:var(--muted)">Status</span><strong id="modal-price" style="color:var(--green-mid)">—</strong>
       </div>
       <div style="display:flex;justify-content:space-between;padding:.6rem 0">
         <span style="color:var(--muted)">Farmer contact</span>
@@ -634,26 +467,270 @@ select.form-input{cursor:pointer}
 </div>
 
 <script>
+const API_URL = 'https://bv9eacztqc.execute-api.us-east-1.amazonaws.com/staging'
+
+const CROP_ICONS = {
+  Tomato:'🍅', Maize:'🌽', Yam:'🟤', Cassava:'🌿', Onion:'🧅',
+  Pepper:'🌶️', Rice:'🍚', Plantain:'🍌'
+}
+const UNIT_LABEL = {
+  Tomato:'crates', Maize:'bags', Yam:'tubers', Cassava:'bags',
+  Onion:'bags', Pepper:'baskets', Rice:'bags', Plantain:'bunches'
+}
+
+let allPrices = []
+let allListings = []
+
+// ---------- NAVIGATION ----------
 function navigate(page) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'))
   document.getElementById('page-' + page).classList.add('active')
   const titles = {dashboard:'Dashboard',listings:'Produce Listings',prices:'Market Prices',demand:'Post Demand',alerts:'Alerts'}
   document.getElementById('page-title').textContent = titles[page] || page
-  event.currentTarget && event.currentTarget.classList.add('active')
+  if (event && event.currentTarget) event.currentTarget.classList.add('active')
+
+  if (page === 'prices' && allPrices.length === 0) loadPrices()
+  if (page === 'listings' && allListings.length === 0) loadListings()
 }
 
-function showListing(crop, loc, qty, price, phone) {
+// ---------- FETCH HELPERS ----------
+async function fetchJSON(url) {
+  const res = await fetch(url)
+  if (!res.ok) throw new Error('HTTP ' + res.status)
+  return res.json()
+}
+
+function setConnectionStatus(ok) {
+  const badge = document.getElementById('connection-badge')
+  if (ok) {
+    badge.className = 'badge-live'
+    badge.textContent = 'Live data'
+  } else {
+    badge.className = 'badge-error'
+    badge.textContent = 'Offline — showing cached'
+  }
+}
+
+// ---------- PRICES ----------
+async function loadPrices() {
+  const market = document.getElementById('prices-market-filter')?.value || ''
+  const tbody = document.getElementById('prices-body')
+  tbody.innerHTML = '<tr><td colspan="6"><div class="skeleton skeleton-row"></div></td></tr>'
+
+  try {
+    const url = market ? `${API_URL}/prices?market=${encodeURIComponent(market)}` : `${API_URL}/prices`
+    const data = await fetchJSON(url)
+    allPrices = data.prices || []
+    setConnectionStatus(true)
+    renderPrices()
+    renderDashboardPrices()
+    updateMetrics()
+    document.getElementById('prices-updated').textContent = 'Updated ' + new Date(data.fetchedAt).toLocaleTimeString()
+  } catch (err) {
+    console.error('Price load error:', err)
+    setConnectionStatus(false)
+    tbody.innerHTML = '<tr><td colspan="6"><div class="empty"><div class="empty-icon">⚠️</div><div class="empty-text">Could not load live prices. Check your connection.</div></div></td></tr>'
+  }
+}
+
+function renderPrices() {
+  const tbody = document.getElementById('prices-body')
+  if (allPrices.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6"><div class="empty"><div class="empty-icon">📊</div><div class="empty-text">No price data available yet.</div></div></td></tr>'
+    return
+  }
+
+  tbody.innerHTML = allPrices.map(p => {
+    const arrow = p.trend === 'up' ? '▲' : p.trend === 'down' ? '▼' : '▶'
+    const color = p.trend === 'up' ? 'var(--green-light)' : p.trend === 'down' ? 'var(--red)' : 'var(--muted)'
+    const changeTxt = p.changePercent > 0 ? '+' + p.changePercent + '%' : p.changePercent + '%'
+    const signalTag = p.signal === 'Buy now' ? 'tag-green' : p.signal === 'Wait' ? 'tag-red' : 'tag-amber'
+    return `
+      <tr onclick="showListing('${p.crop}','${p.market}','—','${p.signal}','')">
+        <td><strong>${p.crop}</strong></td>
+        <td>${p.market}</td>
+        <td>₦${p.pricePerKg.toLocaleString()}/kg</td>
+        <td>₦${p.pricePerUnit.toLocaleString()}/${p.unit}</td>
+        <td style="color:${color}">${changeTxt} ${arrow}</td>
+        <td><span class="tag ${signalTag}">${p.signal}</span></td>
+      </tr>`
+  }).join('')
+}
+
+function renderDashboardPrices() {
+  const container = document.getElementById('dash-prices-rows')
+  const kano = allPrices.filter(p => p.market === 'Kano').slice(0, 5)
+  const list = kano.length ? kano : allPrices.slice(0, 5)
+
+  if (list.length === 0) {
+    container.innerHTML = '<div class="empty"><div class="empty-text">No price data yet</div></div>'
+    return
+  }
+
+  const maxPrice = Math.max(...list.map(p => p.pricePerKg))
+  container.innerHTML = list.map(p => {
+    const pct = Math.round((p.pricePerKg / maxPrice) * 100)
+    const arrow = p.trend === 'up' ? '&#9650;' : p.trend === 'down' ? '&#9660;' : '&#9654;'
+    const color = p.trend === 'up' ? 'var(--green-light)' : p.trend === 'down' ? 'var(--red)' : 'var(--muted)'
+    const changeTxt = p.changePercent > 0 ? '+' + p.changePercent + '%' : p.changePercent + '%'
+    return `
+      <div class="price-row">
+        <div class="price-crop">${p.crop}</div>
+        <div class="price-bar-wrap"><div class="price-bar" style="width:${pct}%"></div></div>
+        <div class="price-val">₦${p.pricePerKg}/kg</div>
+        <div class="price-trend" style="color:${color}">${arrow} ${changeTxt}</div>
+      </div>`
+  }).join('')
+
+  document.getElementById('dash-prices-market').textContent = (kano.length ? 'Kano' : (list[0]?.market || '')) + ' market'
+}
+
+// ---------- LISTINGS ----------
+async function loadListings() {
+  const crop = document.getElementById('listings-crop-filter')?.value || ''
+  const container = document.getElementById('listings-container')
+  container.innerHTML = '<div class="skeleton skeleton-row" style="height:80px"></div><div class="skeleton skeleton-row" style="height:80px"></div>'
+
+  try {
+    const url = crop ? `${API_URL}/listings?crop=${encodeURIComponent(crop)}` : `${API_URL}/listings`
+    const data = await fetchJSON(url)
+    allListings = data.listings || []
+    setConnectionStatus(true)
+    renderListings()
+    renderDashboardListings()
+    updateMetrics()
+  } catch (err) {
+    console.error('Listings load error:', err)
+    setConnectionStatus(false)
+    container.innerHTML = '<div class="empty"><div class="empty-icon">⚠️</div><div class="empty-text">Could not load live listings. Check your connection.</div></div>'
+  }
+}
+
+function renderListings() {
+  const container = document.getElementById('listings-container')
+  if (allListings.length === 0) {
+    container.innerHTML = `
+      <div class="empty">
+        <div class="empty-icon">📦</div>
+        <div class="empty-text">No active listings yet.<br>Listings created via USSD (option 3) will appear here in real time.</div>
+      </div>`
+    return
+  }
+
+  container.innerHTML = allListings.map(l => {
+    const icon = CROP_ICONS[l.crop] || '🌾'
+    const unit = l.unit || 'kg'
+    const unitCount = l.unitCount || l.quantityKg
+    const listedAgo = timeAgo(l.listedAt)
+    const expiresIn = timeUntil(l.expiresAt)
+    return `
+      <div class="listing-card" onclick="showListing('${l.crop}','${unitCount} ${unit}','${listedAgo}','Active','${l.phone}')">
+        <div class="listing-crop-icon">${icon}</div>
+        <div class="listing-info">
+          <div class="listing-name">${l.crop} — ${unitCount} ${unit} (${l.quantityKg}kg)</div>
+          <div class="listing-meta">📞 ${maskPhone(l.phone)} &nbsp;|&nbsp; Listed ${listedAgo} &nbsp;|&nbsp; ${expiresIn}</div>
+        </div>
+        <div class="listing-price">
+          <div class="listing-price-val">${l.quantityKg}kg</div>
+          <div class="listing-price-kg">total</div>
+        </div>
+        <div class="listing-actions">
+          <span class="tag tag-green">${l.status || 'Active'}</span>
+        </div>
+      </div>`
+  }).join('')
+}
+
+function renderDashboardListings() {
+  const tbody = document.getElementById('dash-listings-body')
+  const recent = allListings.slice(0, 5)
+
+  if (recent.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5"><div class="empty"><div class="empty-text">No listings yet — create one via USSD option 3</div></div></td></tr>'
+    return
+  }
+
+  tbody.innerHTML = recent.map(l => {
+    const unit = l.unit || 'kg'
+    const unitCount = l.unitCount || l.quantityKg
+    return `
+      <tr onclick="showListing('${l.crop}','${unitCount} ${unit}','${timeAgo(l.listedAt)}','Active','${l.phone}')">
+        <td><strong>${l.crop}</strong></td>
+        <td>${unitCount} ${unit}</td>
+        <td>${maskPhone(l.phone)}</td>
+        <td>${timeAgo(l.listedAt)}</td>
+        <td><span class="tag tag-green">${l.status || 'Active'}</span></td>
+      </tr>`
+  }).join('')
+}
+
+// ---------- METRICS ----------
+function updateMetrics() {
+  document.getElementById('m-listings').textContent = allListings.length
+  document.getElementById('m-listings-sub').textContent = allListings.length ? allListings.length + ' active' : 'none yet'
+
+  const tomatoes = allPrices.filter(p => p.crop === 'Tomato')
+  if (tomatoes.length) {
+    const avg = Math.round(tomatoes.reduce((s,p) => s + p.pricePerKg, 0) / tomatoes.length)
+    document.getElementById('m-tomato').textContent = '₦' + avg
+    const trendUp = tomatoes.some(p => p.trend === 'up')
+    document.getElementById('m-tomato-sub').textContent = trendUp ? '▲ rising in some markets' : 'stable'
+  } else {
+    document.getElementById('m-tomato').textContent = '—'
+    document.getElementById('m-tomato-sub').textContent = 'no data'
+  }
+
+  const crops = new Set(allPrices.map(p => p.crop))
+  document.getElementById('m-crops').textContent = crops.size
+
+  const markets = new Set(allPrices.map(p => p.market))
+  document.getElementById('m-markets').textContent = markets.size
+}
+
+// ---------- HELPERS ----------
+function timeAgo(iso) {
+  if (!iso) return '—'
+  const diff = Date.now() - new Date(iso).getTime()
+  const mins = Math.floor(diff / 60000)
+  if (mins < 1) return 'just now'
+  if (mins < 60) return mins + 'm ago'
+  const hrs = Math.floor(mins / 60)
+  if (hrs < 24) return hrs + 'h ago'
+  return Math.floor(hrs / 24) + 'd ago'
+}
+
+function timeUntil(iso) {
+  if (!iso) return ''
+  const diff = new Date(iso).getTime() - Date.now()
+  if (diff <= 0) return 'expired'
+  const days = Math.floor(diff / 86400000)
+  const hrs = Math.floor((diff % 86400000) / 3600000)
+  return `Expires in ${days}d ${hrs}h`
+}
+
+function maskPhone(phone) {
+  if (!phone) return '—'
+  return phone.length > 6 ? phone.slice(0,6) + '****' + phone.slice(-2) : phone
+}
+
+function updateDemandUnit() {
+  const crop = document.getElementById('demand-crop').value
+  const unit = UNIT_LABEL[crop] || 'kg'
+  document.getElementById('demand-qty-label').textContent = `Quantity needed (${unit})`
+}
+
+// ---------- MODALS ----------
+function showListing(crop, qty, listed, status, phone) {
   document.getElementById('modal-crop').textContent = crop
-  document.getElementById('modal-loc').textContent = loc
   document.getElementById('modal-qty').textContent = qty
-  document.getElementById('modal-price').textContent = price
-  document.getElementById('modal-phone').textContent = '+' + phone
-  document.getElementById('modal-call-btn').onclick = () => { window.location.href = 'tel:+' + phone }
+  document.getElementById('modal-loc').textContent = listed
+  document.getElementById('modal-price').textContent = status
+  document.getElementById('modal-phone').textContent = phone ? '+' + phone : 'Not available'
+  document.getElementById('modal-call-btn').onclick = () => { if(phone) window.location.href = 'tel:+' + phone }
+  document.getElementById('modal-call-btn').style.display = phone ? 'inline-flex' : 'none'
   document.getElementById('listing-modal').classList.add('open')
 }
-
-function openModal() { navigate('demand') }
 
 function closeModal(e) {
   if (e.target === document.getElementById('listing-modal')) {
@@ -678,12 +755,17 @@ function filterListings(val) {
   })
 }
 
-function filterByCrop(val) {
-  const cards = document.querySelectorAll('#listings-container .listing-card')
-  cards.forEach(c => {
-    c.style.display = (!val || c.textContent.includes(val)) ? 'flex' : 'none'
-  })
-}
+// ---------- INIT ----------
+window.addEventListener('DOMContentLoaded', () => {
+  loadPrices()
+  loadListings()
+  updateDemandUnit()
+  // Auto-refresh every 60 seconds
+  setInterval(() => {
+    loadPrices()
+    loadListings()
+  }, 60000)
+})
 </script>
 </body>
 </html>
