@@ -4,211 +4,418 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HarvestIQ — Postharvest Intelligence for Nigerian Farmers</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --green:#2D6A2D;--green-light:#4CAF50;--amber:#F5A623;
-    --dark:#0F1A0F;--text:#1a1a1a;--muted:#555;--bg:#FAFDF7;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --paper: #F2EFE9;
+    --surface: #FFFFFF;
+    --ink: #1C1A17;
+    --ink-muted: #5C5A56;
+    --cargo-orange: #E85D04;
+    --cargo-hover: #CC5204;
+    --line: #D1CEC5;
+    --verified: #1F4A2C;
+    
+    --font-sans: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    
+    --border-thick: 2px solid var(--ink);
+    --border-thin: 1px solid var(--ink);
   }
-  body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text)}
-  a{text-decoration:none;color:inherit}
-  nav{background:var(--dark);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-  .logo{font-size:1.4rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px}
-  .logo span{color:var(--amber)}
-  .nav-cta{background:var(--amber);color:var(--dark);padding:8px 20px;border-radius:6px;font-weight:600;font-size:14px}
-  .hero{background:linear-gradient(135deg,var(--dark) 0%,#1a3a1a 100%);color:#fff;padding:5rem 2rem;text-align:center}
-  .hero-badge{display:inline-block;background:rgba(245,166,35,0.15);border:1px solid var(--amber);color:var(--amber);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:500;margin-bottom:1.5rem}
-  .hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.15;margin-bottom:1.25rem;max-width:800px;margin-left:auto;margin-right:auto}
-  .hero h1 span{color:var(--amber)}
-  .hero p{font-size:1.15rem;color:rgba(255,255,255,0.75);max-width:580px;margin:0 auto 2rem;line-height:1.7}
-  .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .btn-primary{background:var(--green-light);color:#fff;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px}
-  .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3);padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px}
-  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;background:var(--amber)}
-  .stat{padding:1.5rem 2rem;text-align:center;border-right:1px solid rgba(0,0,0,0.1)}
-  .stat:last-child{border-right:none}
-  .stat-num{font-size:2rem;font-weight:700;color:var(--dark)}
-  .stat-lbl{font-size:13px;color:rgba(0,0,0,0.65);margin-top:4px}
-  section{padding:4rem 2rem;max-width:1100px;margin:0 auto}
-  .section-label{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green-light);margin-bottom:.75rem}
-  .section-title{font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;color:var(--dark);margin-bottom:1rem;line-height:1.25}
-  .section-sub{font-size:1rem;color:var(--muted);line-height:1.7;max-width:600px}
-  .problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:2.5rem}
-  .problem-card{background:#fff;border:1px solid #e8f0e8;border-radius:12px;padding:1.5rem;border-left:4px solid var(--green-light)}
-  .problem-icon{font-size:1.75rem;margin-bottom:.75rem}
-  .problem-title{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:.5rem}
-  .problem-body{font-size:13px;color:var(--muted);line-height:1.6}
 
-  /* VIDEO SECTION */
-  .video-section{background:var(--dark);padding:4rem 2rem}
-  .video-inner{max-width:900px;margin:0 auto;text-align:center}
-  .video-label{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.75rem}
-  .video-title{font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;color:#fff;margin-bottom:1rem}
-  .video-sub{font-size:1rem;color:rgba(255,255,255,0.65);margin-bottom:2rem;line-height:1.7}
-  .video-wrap{position:relative;padding-bottom:56.25%;height:0;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);border:2px solid rgba(245,166,35,0.3)}
-  .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+  body {
+    font-family: var(--font-sans);
+    background: var(--paper);
+    color: var(--ink);
+    background-image: radial-gradient(var(--line) 1px, transparent 1px);
+    background-size: 24px 24px;
+    line-height: 1.6;
+  }
 
-  .how-bg{background:#fff;padding:4rem 2rem}
-  .how-inner{max-width:1100px;margin:0 auto}
-  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:2.5rem}
-  .step{text-align:center;padding:1.5rem}
-  .step-num{width:48px;height:48px;border-radius:50%;background:var(--green);color:#fff;font-size:1.2rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
-  .step-title{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:.5rem}
-  .step-body{font-size:13px;color:var(--muted);line-height:1.6}
-  .demo-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2.5rem}
-  .phone{background:var(--dark);border-radius:24px;padding:2rem 1.5rem;color:#fff;font-family:'Courier New',monospace;font-size:13px;line-height:1.8;max-width:300px}
-  .phone-header{font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:1rem;text-align:center}
-  .phone-screen{background:#111;border-radius:12px;padding:1.25rem;color:#4CAF50}
-  .phone-title{color:rgba(255,255,255,0.6);font-size:11px;margin-bottom:.5rem}
-  .demo-points{display:flex;flex-direction:column;gap:16px}
-  .demo-point{display:flex;gap:12px;align-items:flex-start}
-  .demo-dot{width:10px;height:10px;border-radius:50%;background:var(--green-light);flex-shrink:0;margin-top:5px}
-  .demo-text{font-size:14px;color:var(--muted);line-height:1.6}
-  .demo-text strong{color:var(--dark)}
-  .cta-section{background:linear-gradient(135deg,var(--green) 0%,#1a4a1a 100%);color:#fff;padding:5rem 2rem;text-align:center}
-  .cta-section h2{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:700;margin-bottom:1rem}
-  .cta-section p{color:rgba(255,255,255,0.75);font-size:1rem;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
-  .ussd-code{display:inline-block;background:var(--amber);color:var(--dark);font-size:1.5rem;font-weight:700;padding:12px 32px;border-radius:8px;font-family:monospace;margin-bottom:1.5rem}
-  footer{background:var(--dark);color:rgba(255,255,255,0.5);text-align:center;padding:2rem;font-size:13px}
-  footer strong{color:#fff}
-  @media(max-width:700px){
-    .demo-wrap{grid-template-columns:1fr}
-    .phone{max-width:100%}
-    .stat{border-right:none;border-bottom:1px solid rgba(0,0,0,0.1)}
+  a { text-decoration: none; color: inherit; }
+  
+  /* GRID WRAPPER (The Ledger) */
+  .layout-grid {
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: var(--surface);
+    border: var(--border-thick);
+    box-shadow: 8px 8px 0px var(--ink);
+  }
+
+  /* NAVIGATION */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: var(--border-thick);
+    background: var(--surface);
+  }
+  
+  .logo {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--cargo-orange); }
+  
+  .nav-links { display: flex; gap: 1rem; }
+  .btn-nav {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border: var(--border-thin);
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .btn-nav:hover { background: var(--paper); }
+  .btn-nav.primary { background: var(--cargo-orange); color: var(--surface); border-color: var(--cargo-orange); }
+  .btn-nav.primary:hover { background: var(--cargo-hover); }
+
+  /* HERO SECTION */
+  .hero {
+    padding: 5rem 2rem;
+    border-bottom: var(--border-thick);
+    text-align: center;
+    background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(209,206,197,0.1) 10px, rgba(209,206,197,0.1) 20px);
+  }
+  
+  .badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--ink);
+    color: var(--surface);
+    padding: 0.25rem 0.75rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero h1 span { color: var(--cargo-orange); }
+  
+  .hero p {
+    font-size: 1.125rem;
+    color: var(--ink-muted);
+    max-width: 650px;
+    margin: 0 auto 2.5rem;
+  }
+  
+  .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-lg {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border: var(--border-thick);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-lg.solid { background: var(--ink); color: var(--surface); }
+  .btn-lg.solid:hover { background: var(--cargo-orange); border-color: var(--cargo-orange); }
+  .btn-lg.outline:hover { background: var(--paper); }
+
+  /* STATS LEDGER */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: var(--border-thick);
+    background: var(--cargo-orange);
+  }
+  
+  .stat-block {
+    padding: 2rem 1.5rem;
+    border-right: var(--border-thick);
+    text-align: center;
+  }
+  .stat-block:last-child { border-right: none; }
+  
+  .stat-num {
+    font-family: var(--font-mono);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .stat-lbl {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  /* GENERIC SECTION STYLING */
+  .section { padding: 4rem 2rem; border-bottom: var(--border-thick); }
+  .section-header { margin-bottom: 3rem; }
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--cargo-orange);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .section-title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; max-width: 800px; }
+  .section-sub { font-size: 1.05rem; color: var(--ink-muted); max-width: 700px; }
+
+  /* PROBLEM GRID */
+  .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; border: var(--border-thick); }
+  .problem-card { padding: 2rem; border-right: var(--border-thin); border-bottom: var(--border-thin); background: var(--surface); }
+  .problem-card:last-child { border-right: none; }
+  .icon-tag { font-family: var(--font-mono); font-size: 1.25rem; margin-bottom: 1rem; display: inline-block; background: var(--paper); padding: 0.5rem; border: var(--border-thin); }
+  .problem-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .problem-body { font-size: 0.9rem; color: var(--ink-muted); }
+
+  /* VIDEO TERMINAL */
+  .video-terminal { background: var(--ink); color: var(--surface); }
+  .video-terminal .section-title { color: var(--surface); }
+  .video-terminal .section-sub { color: #A3A19C; }
+  .video-frame {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    border: 2px solid var(--surface);
+    background: #000;
+  }
+  .video-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+  /* HOW IT WORKS / STEPS */
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .step-card { padding-top: 1rem; border-top: 4px solid var(--ink); }
+  .step-num { font-family: var(--font-mono); font-size: 2rem; font-weight: 700; color: var(--cargo-orange); margin-bottom: 1rem; }
+  .step-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .step-body { font-size: 0.95rem; color: var(--ink-muted); }
+
+  /* USSD DEMO */
+  .demo-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  
+  .ussd-device {
+    background: var(--ink);
+    border: 2px solid var(--ink-muted);
+    padding: 2rem;
+    color: #4CAF50; /* Retro terminal green */
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .ussd-header { text-align: center; color: var(--surface); margin-bottom: 1.5rem; border-bottom: 1px solid var(--ink-muted); padding-bottom: 0.5rem; }
+  
+  .demo-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .demo-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .demo-indicator { font-family: var(--font-mono); color: var(--cargo-orange); font-weight: 700; }
+  .demo-text { font-size: 1rem; color: var(--ink-muted); }
+  .demo-text strong { color: var(--ink); }
+
+  /* CTA SECTION */
+  .cta-section { text-align: center; background: var(--paper); }
+  .ussd-display {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: var(--surface);
+    border: var(--border-thick);
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem;
+    text-align: center;
+    background: var(--ink);
+    color: #A3A19C;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+  footer strong { color: var(--surface); font-family: var(--font-sans); font-size: 0.85rem; }
+
+  @media(max-width: 900px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat-block:nth-child(2) { border-right: none; }
+    .stat-block { border-bottom: var(--border-thick); }
+    .steps-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .demo-wrap { grid-template-columns: 1fr; gap: 2rem; }
+    .layout-grid { margin: 0; border: none; box-shadow: none; border-left: var(--border-thick); border-right: var(--border-thick); }
+  }
+  @media(max-width: 600px) {
+    .stats { grid-template-columns: 1fr; }
+    .stat-block { border-right: none !important; }
+    .problem-card { border-right: none; }
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">🌾 Harvest<span>IQ</span></div>
-  <div style="display:flex;gap:12px;">
-    <a href="buyer-dashboard.html" class="nav-cta" style="background:var(--green-light);color:#fff;">Buyer Login →</a>
-    <a href="mailto:harvestiqng@gmail.com" class="nav-cta">Contact Us</a>
+<div class="layout-grid">
+  
+  <nav>
+    <div class="logo">Harvest<span>IQ</span></div>
+    <div class="nav-links">
+      <a href="mailto:harvestiqng@gmail.com" class="btn-nav">Contact</a>
+      <a href="buyer-dashboard.html" class="btn-nav primary">Buyer Terminal →</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="badge">🇳🇬 Built for Nigerian Smallholder Farmers</div>
+    <h1>Stop Losing Your Harvest.<br>Start Selling <span>Smarter.</span></h1>
+    <p>HarvestIQ delivers real-time market prices, AI-powered storage advice, and direct buyer connections — all via USSD. No smartphone. No internet. No middlemen.</p>
+    <div class="hero-actions">
+      <a href="#video" class="btn-lg solid">Watch Demo</a>
+      <a href="buyer-dashboard.html" class="btn-lg outline">Access Buyer Dashboard →</a>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat-block"><div class="stat-num">40%</div><div class="stat-lbl">of food lost post-harvest</div></div>
+    <div class="stat-block"><div class="stat-num">₦5T</div><div class="stat-lbl">annual food trade loss</div></div>
+    <div class="stat-block"><div class="stat-num">99%</div><div class="stat-lbl">farmers reachable by USSD</div></div>
+    <div class="stat-block"><div class="stat-num">72h</div><div class="stat-lbl">critical harvest window</div></div>
   </div>
-</nav>
 
-<div class="hero">
-  <div class="hero-badge">🇳🇬 Built for Nigerian Smallholder Farmers</div>
-  <h1>Stop Losing Your Harvest.<br>Start Selling <span>Smarter.</span></h1>
-  <p>HarvestIQ delivers real-time market prices, AI-powered storage advice, and direct buyer connections — all via USSD. No smartphone. No internet. No middlemen.</p>
-  <div class="hero-btns">
-    <a href="#video" class="btn-primary">Watch Demo</a>
-    <a href="buyer-dashboard.html" class="btn-secondary">Buyer Dashboard →</a>
-  </div>
-</div>
-
-<div class="stats">
-  <div class="stat"><div class="stat-num">40%</div><div class="stat-lbl">of food lost post-harvest</div></div>
-  <div class="stat"><div class="stat-num">₦5T</div><div class="stat-lbl">annual food trade loss</div></div>
-  <div class="stat"><div class="stat-num">99%</div><div class="stat-lbl">farmers reachable by USSD</div></div>
-  <div class="stat"><div class="stat-num">72hrs</div><div class="stat-lbl">critical harvest window</div></div>
-</div>
-
-<section>
-  <div class="section-label">The Problem</div>
-  <div class="section-title">Nigerian farmers lose 40% of their harvest — not from bad farming, but bad information.</div>
-  <div class="section-sub">In the 72 hours after harvest, most smallholder farmers have no idea what the market price is, how long they can safely store their produce, or who is buying today. HarvestIQ solves all three.</div>
-  <div class="problem-grid">
-    <div class="problem-card">
-      <div class="problem-icon">📉</div>
-      <div class="problem-title">No price visibility</div>
-      <div class="problem-body">Farmers sell to middlemen at 40% below market rate because they don't know the real price at nearby markets.</div>
+  <section class="section">
+    <div class="section-header">
+      <span class="mono-label">INCIDENT REPORT // The Problem</span>
+      <h2 class="section-title">Nigerian farmers lose 40% of their harvest — not from bad farming, but bad information.</h2>
+      <p class="section-sub">In the 72 hours after harvest, most smallholder farmers have no idea what the market price is, how long they can safely store their produce, or who is buying today. HarvestIQ solves all three.</p>
     </div>
-    <div class="problem-card">
-      <div class="problem-icon">🍅</div>
-      <div class="problem-title">Produce spoilage</div>
-      <div class="problem-body">Without storage guidance, up to 50% of tomatoes and peppers rot before they reach buyers.</div>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">🤝</div>
-      <div class="problem-title">No buyer access</div>
-      <div class="problem-body">Farmers have no direct way to reach buyers, processors or aggregators — they depend entirely on middlemen.</div>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">📵</div>
-      <div class="problem-title">Smartphone barrier</div>
-      <div class="problem-body">Existing agritech solutions require smartphones and internet. 99% of farmers only have basic feature phones.</div>
-    </div>
-  </div>
-</section>
-
-<!-- VIDEO SECTION -->
-<div class="video-section" id="video">
-  <div class="video-inner">
-    <div class="video-label">Live Demo</div>
-    <div class="video-title">See HarvestIQ in Action</div>
-    <div class="video-sub">Watch a complete demo — from checking real-time crop prices, to getting AI storage advice, to listing produce for sale. All via USSD on any phone.</div>
-    <div class="video-wrap">
-      <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/09320e5f303442db9dbe78ec152c92d0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-    </div>
-  </div>
-</div>
-
-<div class="how-bg" id="how">
-  <div class="how-inner">
-    <div class="section-label">How It Works</div>
-    <div class="section-title">Three steps. Zero internet required.</div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-title">Dial *384*14367#</div>
-        <div class="step-body">Any farmer on any phone dials the HarvestIQ USSD code. Works on MTN, Airtel, Glo, and 9mobile with zero data cost.</div>
+    
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="icon-tag">📉</div>
+        <h3 class="problem-title">No price visibility</h3>
+        <p class="problem-body">Farmers sell to middlemen at 40% below market rate because they don't know the real price at nearby markets.</p>
       </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-title">Get instant intelligence</div>
-        <div class="step-body">Check real-time prices at nearby markets, get AI-powered storage advice, or list produce for sale — all in under 60 seconds.</div>
+      <div class="problem-card">
+        <div class="icon-tag">🍅</div>
+        <h3 class="problem-title">Produce spoilage</h3>
+        <p class="problem-body">Without storage guidance, up to 50% of tomatoes and peppers rot before they reach buyers.</p>
       </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-title">Sell at the right price</div>
-        <div class="step-body">Buyers contact farmers directly. No middlemen. Price alert SMS fires the moment your target price is reached.</div>
+      <div class="problem-card">
+        <div class="icon-tag">🤝</div>
+        <h3 class="problem-title">No buyer access</h3>
+        <p class="problem-body">Farmers have no direct way to reach buyers, processors or aggregators — they depend entirely on middlemen.</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon-tag">📵</div>
+        <h3 class="problem-title">Smartphone barrier</h3>
+        <p class="problem-body">Existing agritech solutions require smartphones and internet. 99% of farmers only have basic feature phones.</p>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<section>
-  <div class="section-label">Live Demo</div>
-  <div class="section-title">What a farmer sees on their phone</div>
-  <div class="demo-wrap">
-    <div class="phone">
-      <div class="phone-header">*384*14367# — HarvestIQ USSD</div>
-      <div class="phone-screen">
-        <div class="phone-title">Welcome to HarvestIQ</div>
-        1. Check crop prices<br>
-        2. Storage advice<br>
-        3. List produce for sale<br>
-        4. Set price alert<br><br>
-        <span style="color:#aaa">Farmer selects 1 → Tomato → Kano</span><br><br>
-        <span style="color:#fff">Tomato - Kano</span><br>
-        Today: N382/kg (rising)<br>
-        Yesterday: N352/kg<br>
-        Tip: Good time to sell<br>
+  <section class="section video-terminal" id="video">
+    <div class="section-header" style="text-align: center;">
+      <span class="mono-label" style="color: var(--cargo-orange);">SYSTEM PREVIEW // Live Demo</span>
+      <h2 class="section-title" style="margin: 0 auto 1rem;">See HarvestIQ in Action</h2>
+      <p class="section-sub" style="margin: 0 auto;">Watch a complete demo — from checking real-time crop prices, to getting AI storage advice, to listing produce for sale. All via USSD on any phone.</p>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://www.loom.com/embed/09320e5f303442db9dbe78ec152c92d0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <span class="mono-label">EXECUTION PROTOCOL // How It Works</span>
+      <h2 class="section-title">Three steps. Zero internet required.</h2>
+    </div>
+    
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Dial *384*14367#</h3>
+        <p class="step-body">Any farmer on any phone dials the HarvestIQ USSD code. Works on MTN, Airtel, Glo, and 9mobile with zero data cost.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Get instant intelligence</h3>
+        <p class="step-body">Check real-time prices at nearby markets, get AI-powered storage advice, or list produce for sale — all in under 60 seconds.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Sell at the right price</h3>
+        <p class="step-body">Buyers contact farmers directly. No middlemen. Price alert SMS fires the moment your target price is reached.</p>
       </div>
     </div>
-    <div class="demo-points">
-      <div class="demo-point"><div class="demo-dot"></div><div class="demo-text"><strong>Real-time prices</strong> from 6 major Nigerian markets — Kano, Lagos Mile 12, Onitsha, Ibadan, Kaduna, Makurdi</div></div>
-      <div class="demo-point"><div class="demo-dot"></div><div class="demo-text"><strong>AI storage advisory</strong> powered by AWS Bedrock — crop-specific, quantity-aware, weather-adjusted</div></div>
-      <div class="demo-point"><div class="demo-dot"></div><div class="demo-text"><strong>Produce listings</strong> visible to traders and aggregators on the buyer dashboard in real time</div></div>
-      <div class="demo-point"><div class="demo-dot"></div><div class="demo-text"><strong>Price alerts via SMS</strong> — farmers set a floor price and get notified the moment the market reaches it</div></div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <span class="mono-label">INTERFACE EXPOSURE // User View</span>
+      <h2 class="section-title">What a farmer sees on their phone</h2>
     </div>
-  </div>
-</section>
+    
+    <div class="demo-wrap">
+      <div class="ussd-device">
+        <div class="ussd-header">*384*14367# — HarvestIQ Network</div>
+        <div>
+          Welcome to HarvestIQ<br>
+          1. Check crop prices<br>
+          2. Storage advice<br>
+          3. List produce for sale<br>
+          4. Set price alert<br><br>
+          <span style="color:var(--ink-muted)">SYS_LOG: Farmer inputs [1] -> [Tomato] -> [Kano]</span><br><br>
+          <span style="color:var(--surface)">[ Tomato - Kano Market ]</span><br>
+          Today: N382/kg (rising)<br>
+          Yesterday: N352/kg<br>
+          Tip: Good time to sell<br>
+        </div>
+      </div>
+      
+      <div class="demo-list">
+        <div class="demo-item">
+          <div class="demo-indicator">[+]</div>
+          <div class="demo-text"><strong>Real-time prices</strong> from 6 major Nigerian markets — Kano, Lagos Mile 12, Onitsha, Ibadan, Kaduna, Makurdi.</div>
+        </div>
+        <div class="demo-item">
+          <div class="demo-indicator">[+]</div>
+          <div class="demo-text"><strong>AI storage advisory</strong> powered by AWS Bedrock — crop-specific, quantity-aware, weather-adjusted.</div>
+        </div>
+        <div class="demo-item">
+          <div class="demo-indicator">[+]</div>
+          <div class="demo-text"><strong>Produce listings</strong> visible to traders and aggregators on the buyer dashboard in real time.</div>
+        </div>
+        <div class="demo-item">
+          <div class="demo-indicator">[+]</div>
+          <div class="demo-text"><strong>Price alerts via SMS</strong> — farmers set a floor price and get notified the moment the market reaches it.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="cta-section" id="contact">
-  <div class="ussd-code">*384*14367#</div>
-  <h2>Ready to stop losing your harvest?</h2>
-  <p>HarvestIQ is currently in beta. Join the waitlist to be among the first farmers and buyers onboarded in Benue and Kano states.</p>
-  <a href="mailto:harvestiqng@gmail.com" class="btn-primary" style="display:inline-block;background:var(--amber);color:var(--dark);padding:14px 32px;border-radius:8px;font-weight:700;font-size:15px">Join the Waitlist →</a>
+  <section class="section cta-section">
+    <div class="ussd-display">*384*14367#</div>
+    <h2 class="section-title" style="margin-left:auto; margin-right:auto; text-align:center;">Ready to stop losing your harvest?</h2>
+    <p class="section-sub" style="margin-left:auto; margin-right:auto; text-align:center; margin-bottom: 2.5rem;">HarvestIQ is currently in beta. Join the waitlist to be among the first farmers and buyers onboarded in Benue and Kano states.</p>
+    <a href="mailto:harvestiqng@gmail.com" class="btn-lg solid" style="display:inline-block;">Join the Waitlist →</a>
+  </section>
+
+  <footer>
+    <strong>HarvestIQ</strong> — Postharvest intelligence for Nigerian smallholder farmers<br>
+    Minna, Niger State, Nigeria &nbsp;|&nbsp; harvestiqng@gmail.com<br><br>
+    © 2026 HarvestIQ. Built with AWS & Africa's Talking.
+  </footer>
+
 </div>
-
-<footer>
-  <strong>HarvestIQ</strong> — Postharvest intelligence for Nigerian smallholder farmers<br>
-  Minna, Niger State, Nigeria &nbsp;|&nbsp; harvestiqng@gmail.com<br><br>
-  © 2026 HarvestIQ. Built with AWS & Africa's Talking.
-</footer>
 
 </body>
 </html>
